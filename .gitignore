@@ -1,1 +1,7 @@
 /gamejolt_icons
+/nav_curses
+/notes
+__pycache__
+log.txt
+debug_log.txt
+config.json
