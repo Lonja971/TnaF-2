@@ -1,2 +1,0 @@
-pip install pynput
-pip install curses

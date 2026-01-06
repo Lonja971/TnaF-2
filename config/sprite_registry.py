@@ -54,17 +54,6 @@ SPRITES = {
     # -------------------- #
     #      АНІМАЦІЇ        #
     # -------------------- #
-    "menu_anim_bg": {
-        "type": "animation",
-        "frames": [
-            "menu/bg/bg0.txt",
-            "menu/bg/bg1.txt",
-            "menu/bg/bg2.txt",
-            "menu/bg/bg3.txt"
-        ],
-        "update_in": 1,
-        "loop": True
-    },
     "office_vent_anima": {
         "type": "animation",
         "frames": [
@@ -74,7 +63,31 @@ SPRITES = {
             "game/office/vent/4.txt",
         ],
         "update_in": 0.07,
-        "loop": True
+        "mode": "loop"
+    },
+    "mask_anima_on": {
+        "type": "animation",
+        "frames": [
+            "game/office/mask/1.txt",
+            "game/office/mask/2.txt",
+            "game/office/mask/3.txt",
+            "game/office/mask/4.txt",
+            "game/office/mask/5.txt",
+        ],
+        "update_in": 0.04,
+        "mode": "hold"
+    },
+    "mask_anima_off": {
+        "type": "animation",
+        "frames": [
+            "game/office/mask/4.txt",
+            "game/office/mask/3.txt",
+            "game/office/mask/2.txt",
+            "game/office/mask/1.txt",
+            "game/office/mask/6.txt",
+        ],
+        "update_in": 0.04,
+        "mode": "hold",
     },
 
     # -------------------------- #

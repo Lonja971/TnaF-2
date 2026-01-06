@@ -1,4 +1,4 @@
-import curses, time, random
+import curses, time, random, sys
 from engine.scene import Scene
 from engine.input_manager import InputManager
 from utils.sprite_loader import load_sprite
@@ -12,7 +12,7 @@ class MainMenu(Scene):
             lambda: self.app.set_scene("game"),
             lambda: self.app.set_scene("game"),
             lambda: self.app.set_scene("settings"),
-            lambda: exit()
+            lambda: sys.exit()
         ]
         self.bg_anim_data = {
             "chica": {

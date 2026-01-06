@@ -1,15 +1,21 @@
 from utils.log import debug_log
 
 class ButterySystem:
-    BASE_DRAIN = 0.1
-    DOOR_DRAIN = 0.2
-    LIGHT_DRAIN = 0.15
-    CAMERA_DRAIN = 0.25
+    CENTER_LIGHT = 0.15
+    SIDE_LIGTH = 0.1
 
     def __init__(self):
         self._accum = 0.0
 
     def update(self, state, dt: float):
-        drain = self.BASE_DRAIN
+        drain = 0
+        if state.light == "center":
+            drain += self.CENTER_LIGHT
+        elif state.light == "left" or state.light == "right":
+            drain += self.SIDE_LIGTH
 
         state.buttery -= drain
+
+        if state.buttery < 0:
+            state.buttery = 0
+            state.light = None

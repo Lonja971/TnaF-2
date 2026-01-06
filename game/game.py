@@ -17,7 +17,7 @@ class Game:
         self.buttery.update(self.state, dt)
         self.time.update(self.state)
 
-    def update_scene_frames(self, curr_scene_frames):
-        processed_frames = self.scene_frames.process_scene_frames(curr_scene_frames)
+    def update_scene_frames(self, curr_scene_frames, anim_state):
+        processed_frames = self.scene_frames.process_scene_frames(curr_scene_frames, anim_state)
 
         return processed_frames

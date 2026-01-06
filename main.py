@@ -1,4 +1,4 @@
-import curses
+import curses, sys
 from engine.config_manager import ConfigManager
 from engine.scenes_manager import  ScenesManager
 
@@ -29,6 +29,6 @@ def check_ter_size(stdscr, config):
                 print("#")
 
         print("Not enought")
-        exit()
+        sys.exit()
 
 curses.wrapper(main)

@@ -36,7 +36,6 @@ class ScenesManager:
             self.input.end_frame()
 
             if self.current_scene.has_frame_changed():
-                debug_log("Frames not the same")
                 self.current_scene.render(self.win)
                 self.win.refresh()
 

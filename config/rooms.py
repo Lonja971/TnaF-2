@@ -76,21 +76,21 @@ ROOMS = {
                 "name": "game_buttery",
                 "x": "left",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
             "game_timeblock": {
                 "name": "game_timeblock",
                 "x": "right",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 5}
             },
             "game_nightnumber": {
                 "name": "game_nightnumber",
                 "x": "right",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
             "office_vent_anima": {
@@ -111,7 +111,19 @@ ROOMS = {
                 "x": "left",
                 "y": "bottom",
                 "z": 10,
-            }
+            },
+            "game_mask_on": {
+                "name": "mask_anima_on",
+                "x": "left",
+                "y": "top",
+                "z": 10,
+            },
+            "game_mask_off": {
+                "name": "mask_anima_off",
+                "x": "left",
+                "y": "top",
+                "z": 11,
+            },
         }
     },
     "game_office_r": {
@@ -124,21 +136,21 @@ ROOMS = {
                 "name": "game_buttery",
                 "x": "left",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
             "game_timeblock": {
                 "name": "game_timeblock",
                 "x": "right",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 5}
             },
             "game_nightnumber": {
                 "name": "game_nightnumber",
                 "x": "right",
                 "y": "top",
-                "z": 11,
+                "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
             "office_vent_anima": {
@@ -159,6 +171,18 @@ ROOMS = {
                 "x": "right",
                 "y": "bottom",
                 "z": 10,
+            },
+            "game_mask_on": {
+                "name": "mask_anima_on",
+                "x": "left",
+                "y": "top",
+                "z": 10,
+            },
+            "game_mask_off": {
+                "name": "mask_anima_off",
+                "x": "left",
+                "y": "top",
+                "z": 11,
             },
         }
     },
