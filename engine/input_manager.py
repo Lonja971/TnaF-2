@@ -37,6 +37,5 @@ class InputManager:
         return key in self.released_keys
 
     def end_frame(self):
-        # очищаємо edge-події
         self.pressed_keys.clear()
         self.released_keys.clear()

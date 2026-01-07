@@ -1,7 +1,7 @@
 SPRITES = {
-    # -------------------------- #
-    #        МЕНЮ                #
-    # -------------------------- #
+    # --------------------- #
+    #        STATIC         #
+    # --------------------- #
     "menu_anim_toy_freddy": {
         "type": "static",
         "path": "menu/anim/toy_freddy.txt"
@@ -50,19 +50,55 @@ SPRITES = {
         "type": "static",
         "path": "game/office/right_light.txt",
     },
+    "cameras_bg": {
+        "type": "static",
+        "path": "game/cameras/bg.txt",
+    },
+    "camera_map": {
+        "type": "static",
+        "path": "game/cameras/map.txt",
+    },
+    "cam_9": {
+        "type": "static",
+        "path": "game/cameras/9/all.txt",
+    },
+    "cam_9_l": {
+        "type": "static",
+        "path": "game/cameras/9/all_l.txt",
+    },
+    "cam_10": {
+        "type": "static",
+        "path": "game/cameras/10/def.txt",
+    },
+    "cam_10_l": {
+        "type": "static",
+        "path": "game/cameras/10/def_l.txt",
+    },
+    "cam_11": {
+        "type": "static",
+        "path": "game/cameras/11/def.txt",
+    },
+    "cam_12": {
+        "type": "static",
+        "path": "game/cameras/12/def.txt",
+    },
+    "cam_12_l": {
+        "type": "static",
+        "path": "game/cameras/12/def_l.txt",
+    },
 
-    # -------------------- #
-    #      АНІМАЦІЇ        #
-    # -------------------- #
-    "office_vent_anima": {
+    # --------------------- #
+    #      ANIMATIONS       #
+    # --------------------- #
+    "office_fan_anima": {
         "type": "animation",
         "frames": [
-            "game/office/vent/1.txt",
-            "game/office/vent/2.txt",
-            "game/office/vent/3.txt",
-            "game/office/vent/4.txt",
+            "game/office/fan/1.txt",
+            "game/office/fan/2.txt",
+            "game/office/fan/3.txt",
+            "game/office/fan/4.txt",
         ],
-        "update_in": 0.07,
+        "update_in": 0.05,
         "mode": "loop"
     },
     "mask_anima_on": {
@@ -89,10 +125,47 @@ SPRITES = {
         "update_in": 0.04,
         "mode": "hold",
     },
+    "tablet_anima_on": {
+        "type": "animation",
+        "frames": [
+            "game/office/tablet/1.txt",
+            "game/office/tablet/2.txt",
+            "game/office/tablet/3.txt",
+            "game/office/tablet/4.txt",
+            "game/office/tablet/5.txt",
+        ],
+        "update_in": 0.04,
+        "mode": "hold",
+    },
+    "tablet_anima_off": {
+        "type": "animation",
+        "frames": [
+            "game/office/tablet/5.txt",
+            "game/office/tablet/4.txt",
+            "game/office/tablet/3.txt",
+            "game/office/tablet/2.txt",
+            "game/office/tablet/1.txt",
+            "game/office/tablet/6.txt",
+        ],
+        "update_in": 0.04,
+        "mode": "hold",
+    },
+    "camera_not_found": {
+        "type": "animation",
+        "frames": [
+            "game/cameras/not_found/1.txt",
+            "game/cameras/not_found/2.txt",
+            "game/cameras/not_found/3.txt",
+            "game/cameras/not_found/4.txt",
+            "game/cameras/not_found/5.txt",
+        ],
+        "update_in": 0.04,
+        "mode": "loop",
+    },
 
-    # -------------------------- #
-    #      ПРОЦЕДУРНІ ФОНИ       #
-    # -------------------------- #
+    # ------------------- #
+    #      GENERATED      #
+    # ------------------- #
     "None": {
         "type": "generated"
     },

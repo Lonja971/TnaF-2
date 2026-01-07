@@ -5,6 +5,7 @@ from scenes.settings import SettingsScene
 from utils.log import debug_log
 from engine.input_manager import InputManager
 from pynput import keyboard
+import time
 
 class ScenesManager:
     def __init__(self, win):
@@ -39,4 +40,5 @@ class ScenesManager:
                 self.current_scene.render(self.win)
                 self.win.refresh()
 
+            time.sleep(0.001)
             curses.napms(16)

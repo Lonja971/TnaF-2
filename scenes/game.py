@@ -13,7 +13,7 @@ class GameScene(Scene):
         self._last_tick = time.time()
         self.paused = False
         self.light_pushed = False
-        vent_nmae = "office_vent_anima"
+        fan_nmae = "office_fan_anima"
         self.curr_frame_data = {
             "room": "game_office_l",
             "sprites": {
@@ -35,9 +35,9 @@ class GameScene(Scene):
                         "number": self.game.night
                     }
                 },
-                "office_vent_anima": {
+                "office_fan_anima": {
                     "type": "animation",
-                    "update_in": SPRITES[vent_nmae]["update_in"],
+                    "update_in": SPRITES[fan_nmae]["update_in"],
                     "frames_num": 4,
                     "mode": "loop",
                     "data": {
@@ -85,21 +85,42 @@ class GameScene(Scene):
             self.app.set_scene("menu")
 
         if input.was_pressed(keyboard.KeyCode.from_char('a')):
-            self.game.state.set_office_pos("l")
+            if self.game.state.is_camera_open:
+                self.game.state.change_active_camera("prev")
+            else:
+                self.game.state.set_office_pos("l")
 
         if input.was_pressed(keyboard.KeyCode.from_char('d')):
-            self.game.state.set_office_pos("r")
+            if self.game.state.is_camera_open:
+                self.game.state.change_active_camera()
+            else:
+                self.game.state.set_office_pos("r")
 
-        # Mask
+        # Mask / Camera
         if input.was_pressed(keyboard.KeyCode.from_char('s')):
-            self.game.state.set_mask()
+            if self.game.state.is_camera_open:
+                self.game.state.start_opening_tablet()
+            else:
+                self.game.state.set_mask()
+
+        if input.was_pressed(keyboard.KeyCode.from_char('w')):
+            if self.game.state.is_mask:
+                self.game.state.set_mask()
+            else:
+                self.game.state.start_opening_tablet()
 
         # Light
         if input.was_pressed(keyboard.Key.space):
-            self.game.state.set_light("center")
+            if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
+                self.game.state.set_camera_light()
+            else:
+                self.game.state.set_light("center")
 
         if input.was_released(keyboard.Key.space):
-            self.game.state.set_light("center", False)
+            if self.game.state.is_camera_open:
+                self.game.state.set_camera_light(False)
+            else:
+                self.game.state.set_light("center", False)
 
         if input.was_pressed(keyboard.KeyCode.from_char('k')):
             self.game.state.set_light("left")

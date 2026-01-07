@@ -93,8 +93,8 @@ ROOMS = {
                 "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
-            "office_vent_anima": {
-                "name": "office_vent_anima",
+            "office_fan_anima": {
+                "name": "office_fan_anima",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,
@@ -110,7 +110,7 @@ ROOMS = {
                 "name": "game_left_light",
                 "x": "left",
                 "y": "bottom",
-                "z": 10,
+                "z": 3,
             },
             "game_mask_on": {
                 "name": "mask_anima_on",
@@ -123,6 +123,18 @@ ROOMS = {
                 "x": "left",
                 "y": "top",
                 "z": 11,
+            },
+            "game_tablet_on": {
+                "name": "tablet_anima_on",
+                "x": "left",
+                "y": "top",
+                "z": 8,
+            },
+            "game_tablet_off": {
+                "name": "tablet_anima_off",
+                "x": "left",
+                "y": "top",
+                "z": 9,
             },
         }
     },
@@ -153,8 +165,8 @@ ROOMS = {
                 "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
-            "office_vent_anima": {
-                "name": "office_vent_anima",
+            "office_fan_anima": {
+                "name": "office_fan_anima",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,
@@ -162,7 +174,7 @@ ROOMS = {
             },
             "center_light": {
                 "name": "game_center_light",
-                "x": 59,
+                "x": 61,
                 "y": 22,
                 "z": 3,
             },
@@ -170,7 +182,7 @@ ROOMS = {
                 "name": "game_right_light",
                 "x": "right",
                 "y": "bottom",
-                "z": 10,
+                "z": 3,
             },
             "game_mask_on": {
                 "name": "mask_anima_on",
@@ -184,6 +196,109 @@ ROOMS = {
                 "y": "top",
                 "z": 11,
             },
+            "game_tablet_on": {
+                "name": "tablet_anima_on",
+                "x": "left",
+                "y": "top",
+                "z": 8,
+            },
+            "game_tablet_off": {
+                "name": "tablet_anima_off",
+                "x": "left",
+                "y": "top",
+                "z": 9,
+            },
         }
     },
+    "camera": {
+        "bg": {
+            "name": "cameras_bg",
+            "x": "right"
+        },
+        "sprites": {
+            "game_buttery": {
+                "name": "game_buttery",
+                "x": "left",
+                "y": "top",
+                "z": 20,
+                "padding": {"x": 2, "y": 1}
+            },
+            "game_buttery": {
+                "name": "game_buttery",
+                "x": "left",
+                "y": "top",
+                "z": 20,
+                "padding": {"x": 2, "y": 1}
+            },
+            "game_nightnumber": {
+                "name": "game_nightnumber",
+                "x": "right",
+                "y": "top",
+                "z": 20,
+                "padding": {"x": 2, "y": 1}
+            },
+            "game_timeblock": {
+                "name": "game_timeblock",
+                "x": "right",
+                "y": "top",
+                "z": 20,
+                "padding": {"x": 2, "y": 5}
+            },
+            "camera_map": {
+                "name": "camera_map",
+                "x": "right",
+                "y": "bottom",
+                "z": 10,
+                "padding": {"x": 5, "y": 2}
+            },
+            "camera_not_found": {
+                "name": "camera_not_found",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_9": {
+                "name": "cam_9",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_9_l": {
+                "name": "cam_9_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_10": {
+                "name": "cam_10",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_10_l": {
+                "name": "cam_10_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_11": {
+                "name": "cam_11",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_12": {
+                "name": "cam_12",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_12_l": {
+                "name": "cam_12_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+        }
+    }
 }
