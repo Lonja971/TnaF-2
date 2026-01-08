@@ -216,6 +216,13 @@ ROOMS = {
             "x": "right"
         },
         "sprites": {
+            "music_box_power": {
+                "name": "music_box_power",
+                "x": "right",
+                "y": "bottom",
+                "z": 11,
+                "padding": {"x": 2, "y": 5}
+            },
             "game_buttery": {
                 "name": "game_buttery",
                 "x": "left",
@@ -249,10 +256,34 @@ ROOMS = {
                 "x": "right",
                 "y": "bottom",
                 "z": 10,
-                "padding": {"x": 5, "y": 2}
+                "padding": {"x": 2, "y": 0}
             },
             "camera_not_found": {
                 "name": "camera_not_found",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_7": {
+                "name": "cam_7",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_7_l": {
+                "name": "cam_7_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_8": {
+                "name": "cam_8",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_8_l": {
+                "name": "cam_8_l",
                 "x": "left",
                 "y": "top",
                 "z": 3,
@@ -265,6 +296,18 @@ ROOMS = {
             },
             "cam_9_l": {
                 "name": "cam_9_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_9_new_bon": {
+                "name": "cam_9_new_bon",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_9_new_bon_l": {
+                "name": "cam_9_new_bon_l",
                 "x": "left",
                 "y": "top",
                 "z": 3,

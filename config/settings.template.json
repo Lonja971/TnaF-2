@@ -1,0 +1,12 @@
+{
+    "terminal_min_width": 300,
+    "terminal_min_height": 92,
+    "volume": 80,
+    "controls": {
+        "up": "KEY_UP",
+        "down": "KEY_DOWN",
+        "left": "KEY_LEFT",
+        "right": "KEY_RIGHT",
+        "action": "ENTER"
+    }
+}

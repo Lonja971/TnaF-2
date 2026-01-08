@@ -1,15 +1,20 @@
 import curses, sys
-from engine.config_manager import ConfigManager
 from engine.scenes_manager import  ScenesManager
+from utils.config_manager import ensure_config
+from utils.save import load_config
+from utils.paths import SAVE_DIR
 
 def main(stdscr):
-    config = ConfigManager()
+    ensure_config("settings.json")
+    ensure_config("save.json")
+
+    config = load_config("settings.json")
     curses.start_color()
     curses.init_pair(1, curses.COLOR_WHITE, 233)
 
     check_ter_size(stdscr, config)
 
-    main_win = curses.newwin(config.terminal_min_height, config.terminal_min_width, 0, 0)
+    main_win = curses.newwin(config["terminal_min_height"], config["terminal_min_width"], 0, 0)
     main_win.bkgd(' ', curses.color_pair(1))
     main_win.keypad(True)
 
@@ -20,11 +25,11 @@ def main(stdscr):
 
 def check_ter_size(stdscr, config):
     h, w = stdscr.getmaxyx()
-    if w < config.terminal_min_width or h < config.terminal_min_height:
+    if w < config["terminal_min_width"] or h < config["terminal_min_height"]:
         curses.endwin()
-        for i in range(config.terminal_min_height):
+        for i in range(config["terminal_min_height"]):
             if i == 0:
-                print("#"*config.terminal_min_width)
+                print("#"*config["terminal_min_width"])
             else:
                 print("#")
 

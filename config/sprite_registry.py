@@ -58,13 +58,37 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/map.txt",
     },
+    "cam_7": {
+        "type": "static",
+        "path": "game/cameras/7/def.txt",
+    },
+    "cam_7_l": {
+        "type": "static",
+        "path": "game/cameras/7/def_l.txt",
+    },
+    "cam_8": {
+        "type": "static",
+        "path": "game/cameras/8/def.txt",
+    },
+    "cam_8_l": {
+        "type": "static",
+        "path": "game/cameras/8/def_l.txt",
+    },
     "cam_9": {
         "type": "static",
-        "path": "game/cameras/9/all.txt",
+        "path": "game/cameras/9/def.txt",
     },
     "cam_9_l": {
         "type": "static",
-        "path": "game/cameras/9/all_l.txt",
+        "path": "game/cameras/9/def_l.txt",
+    },
+    "cam_9_new_bon": {
+        "type": "static",
+        "path": "game/cameras/9/new_bon.txt",
+    },
+    "cam_9_new_bon_l": {
+        "type": "static",
+        "path": "game/cameras/9/new_bon_l.txt",
     },
     "cam_10": {
         "type": "static",
@@ -109,20 +133,22 @@ SPRITES = {
             "game/office/mask/3.txt",
             "game/office/mask/4.txt",
             "game/office/mask/5.txt",
+            "game/office/mask/6.txt",
         ],
-        "update_in": 0.04,
+        "update_in": 0.02,
         "mode": "hold"
     },
     "mask_anima_off": {
         "type": "animation",
         "frames": [
+            "game/office/mask/5.txt",
             "game/office/mask/4.txt",
             "game/office/mask/3.txt",
             "game/office/mask/2.txt",
             "game/office/mask/1.txt",
-            "game/office/mask/6.txt",
+            "game/office/mask/0.txt",
         ],
-        "update_in": 0.04,
+        "update_in": 0.02,
         "mode": "hold",
     },
     "tablet_anima_on": {
@@ -145,7 +171,7 @@ SPRITES = {
             "game/office/tablet/3.txt",
             "game/office/tablet/2.txt",
             "game/office/tablet/1.txt",
-            "game/office/tablet/6.txt",
+            "game/office/tablet/0.txt",
         ],
         "update_in": 0.04,
         "mode": "hold",
@@ -182,6 +208,12 @@ SPRITES = {
         "type": "generated"
     },
     "game_nightnumber": {
+        "type": "generated"
+    },
+    "camera_map": {
+        "type": "generated"
+    },
+    "music_box_power": {
         "type": "generated"
     },
 }

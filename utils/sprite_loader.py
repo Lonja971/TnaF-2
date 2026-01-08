@@ -11,10 +11,3 @@ def load_sprite(name):
     with open(path, "r", encoding="utf-8") as f:
         lines = [line.rstrip("\n") for line in f]
     return lines
-
-def save_sprite(name, lines):
-    """Зберігає список рядків як txt-спрайт"""
-    os.makedirs(ASSETS_DIR, exist_ok=True)
-    path = os.path.join(ASSETS_DIR, f"{name}")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))

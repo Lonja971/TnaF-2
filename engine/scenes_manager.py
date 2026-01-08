@@ -4,12 +4,13 @@ from scenes.game import GameScene
 from scenes.settings import SettingsScene
 from utils.log import debug_log
 from engine.input_manager import InputManager
-from pynput import keyboard
+from engine.save_state import SaveState
 import time
 
 class ScenesManager:
     def __init__(self, win):
         self.win = win
+        self.save_state = SaveState()
         self.scenes = {
             "menu": MainMenu,
             "game": GameScene,
@@ -17,11 +18,11 @@ class ScenesManager:
         }
         self.current_scene = None
 
-    def set_scene(self, name):
+    def set_scene(self, name, params={}):
         if self.current_scene:
             self.current_scene.on_exit()
 
-        self.current_scene = self.scenes[name](self)
+        self.current_scene = self.scenes[name](self, self.save_state, params)
         self.current_scene.on_enter()
 
     def run(self):

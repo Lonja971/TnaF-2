@@ -1,16 +1,16 @@
 import curses, time, random, sys
 from engine.scene import Scene
-from engine.input_manager import InputManager
-from utils.sprite_loader import load_sprite
 from utils.log import debug_log
 from pynput import keyboard
+from scenes.helpers import new_game
 
 class MainMenu(Scene):
-    def __init__(self, app):
+    def __init__(self, app, save_state, params):
         super().__init__(app)
+        self.save_state = save_state
         self.options_action = [
-            lambda: self.app.set_scene("game"),
-            lambda: self.app.set_scene("game"),
+            lambda: self.app.set_scene("game", {"night_num": self.save_state.data["curr_night"]}),
+            lambda: new_game(self.app, self.save_state.update),
             lambda: self.app.set_scene("settings"),
             lambda: sys.exit()
         ]
@@ -42,7 +42,7 @@ class MainMenu(Scene):
                     "type": "generated",
                     "data": {
                         "selected": 0,
-                        "options": ["Night 1", "New game", "Settings", "Quit"]
+                        "options": [f"Night {self.save_state.data["curr_night"]}", "New game", "Settings", "Quit"]
                     }
                 },
                 "menu_logo_text": {

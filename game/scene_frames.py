@@ -20,13 +20,13 @@ class GameSceneFrames:
                 "game_buttery": {
                     "type": "generated",
                     "data": {
-                        "value": self.state.buttery
+                        "value": self.state.get_buttery_level()
                     }
                 },
                 "game_timeblock": {
                     "type": "generated",
                     "data": {
-                        "time": self.state.time.copy()
+                        "time": self.state.time.time.copy()
                     }
                 },
                 "game_nightnumber": {
@@ -149,11 +149,11 @@ class GameSceneFrames:
             elif self.state.light != "right" and "right_light" in curr_sprites_frames:
                 frames_data["delete"].append("right_light")
 
-        if curr_sprites_frames["game_buttery"]["data"]["value"] != int(self.state.buttery):
+        if curr_sprites_frames["game_buttery"]["data"]["value"] != int(self.state.get_buttery_level()):
             frames_data["update"]["game_buttery"] = {
                 "type": "generated",
                     "data": {
-                        "value": int(self.state.buttery)
+                        "value": int(self.state.get_buttery_level())
                     }
             }
 
@@ -161,7 +161,7 @@ class GameSceneFrames:
             frames_data["update"]["game_timeblock"] = {
                 "type": "generated",
                     "data": {
-                        "time": self.state.time.copy()
+                        "time": self.state.time.time.copy()
                     }
             }
 
@@ -238,13 +238,13 @@ class GameSceneFrames:
                 "game_buttery": {
                     "type": "generated",
                     "data": {
-                        "value": self.state.buttery
+                        "value": self.state.get_buttery_level()
                     }
                 },
                 "game_timeblock": {
                     "type": "generated",
                     "data": {
-                        "time": self.state.time.copy()
+                        "time": self.state.time.time.copy()
                     }
                 },
                 "game_nightnumber": {
@@ -254,10 +254,21 @@ class GameSceneFrames:
                     }
                 },
                 "camera_map": {
-                    "type": "static"
+                    "type": "generated",
+                    "data": {
+                        "active_cam": self.state.active_camera_num
+                    }
                 }
             }
         }
+
+        if self.state.active_camera_num == 11:
+            frames["music_box_power"] = {
+                "type": "generated",
+                "data": {
+                    "power": int(self.state.music_box.power)
+                }
+            }
 
         if active_cam_name not in ROOMS[curr_scene_frames["room"]]["sprites"]:
             frames["camera_not_found"] = {
@@ -272,9 +283,21 @@ class GameSceneFrames:
             }
         else:
             if self.state.is_camera_light:
-                frames[f"{active_cam_name}_l"] = {
-                    "type": "static"
-                }
+                if f"{active_cam_name}_l" not in ROOMS[curr_scene_frames["room"]]["sprites"]:
+                    frames["camera_not_found"] = {
+                        "type": "animation",
+                        "update_in": SPRITES["camera_not_found"]["update_in"],
+                        "frames_num": len(SPRITES["camera_not_found"]["frames"]),
+                        "mode": SPRITES["camera_not_found"]["mode"],
+                        "data": {
+                            "curr_frame": 0,
+                            "last_update": time.time()
+                        }
+                    }
+                else:
+                    frames[f"{active_cam_name}_l"] = {
+                        "type": "static"
+                    }
             else:
                 frames[active_cam_name] = {
                     "type": "static"
@@ -294,11 +317,38 @@ class GameSceneFrames:
             "delete": []
         }
 
-        if curr_sprites_frames["game_buttery"]["data"]["value"] != int(self.state.buttery):
+        if self.state.active_camera_num == 11:
+            if "music_box_power" not in curr_sprites_frames:
+                frames_data["update"]["music_box_power"] = {
+                    "type": "generated",
+                    "data": {
+                        "power": int(self.state.music_box.power)
+                    }
+                }
+            elif curr_sprites_frames["music_box_power"]["data"]["power"] != int(self.state.music_box.power):
+                frames_data["update"]["music_box_power"] = {
+                    "type": "generated",
+                    "data": {
+                        "power": int(self.state.music_box.power)
+                    }
+                }
+        else:
+            if "music_box_power" in curr_sprites_frames:
+                frames_data["delete"].append("music_box_power")
+
+        if curr_sprites_frames["camera_map"]["data"]["active_cam"] != self.state.active_camera_num:
+            frames_data["update"]["camera_map"] = {
+                "type": "generated",
+                    "data": {
+                        "active_cam": self.state.active_camera_num
+                    }
+            }
+
+        if curr_sprites_frames["game_buttery"]["data"]["value"] != int(self.state.get_buttery_level()):
             frames_data["update"]["game_buttery"] = {
                 "type": "generated",
                     "data": {
-                        "value": int(self.state.buttery)
+                        "value": int(self.state.get_buttery_level())
                     }
             }
 
@@ -306,7 +356,7 @@ class GameSceneFrames:
             frames_data["update"]["game_timeblock"] = {
                 "type": "generated",
                     "data": {
-                        "time": self.state.time.copy()
+                        "time": self.state.time.time.copy()
                     }
             }
 
@@ -314,7 +364,6 @@ class GameSceneFrames:
             for sprite_name in list(curr_sprites_frames.keys()):
                 if sprite_name.startswith("cam_"):
                     frames_data["delete"].append(sprite_name)
-
             frames_data["update"]["camera_not_found"] = {
                 "type": "animation",
                 "update_in": SPRITES["camera_not_found"]["update_in"],
@@ -336,15 +385,39 @@ class GameSceneFrames:
             if self.state.is_camera_light and f"{active_cam_name}_l" not in curr_sprites_frames:
                 if active_cam_name in curr_sprites_frames:
                     frames_data["delete"].append(active_cam_name)
-                frames_data["update"][f"{active_cam_name}_l"] = {
-                    "type": "static"
-                }
+
+                if f"{active_cam_name}_l" not in ROOMS[curr_scene_frames["room"]]["sprites"]:
+                    frames_data["update"]["camera_not_found"] = {
+                        "type": "animation",
+                        "update_in": SPRITES["camera_not_found"]["update_in"],
+                        "frames_num": len(SPRITES["camera_not_found"]["frames"]),
+                        "mode": SPRITES["camera_not_found"]["mode"],
+                        "data": {
+                            "curr_frame": 0,
+                            "last_update": time.time()
+                        }
+                    }
+                else:
+                    frames_data["update"][f"{active_cam_name}_l"] = {
+                        "type": "static"
+                    }
+
             if not self.state.is_camera_light and active_cam_name not in curr_sprites_frames:
                 if f"{active_cam_name}_l" in curr_sprites_frames:
                     frames_data["delete"].append(f"{active_cam_name}_l")
+
                 frames_data["update"][active_cam_name] = {
                     "type": "static"
                 }
+
+            for name, anim_class in self.state.animatronics.items():
+                if anim_class.pos == self.state.active_camera_num:
+                    frames_data["update"][f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}"] = {
+                        "type": "static"
+                    }
+                else:
+                    if f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}" in curr_sprites_frames:
+                        frames_data["delete"].append(f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}")
 
         return frames_data
 

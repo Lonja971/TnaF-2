@@ -2,6 +2,7 @@ from utils.log import debug_log
 
 class ButterySystem:
     def __init__(self):
+        self.power = 100
         self.CENTER_LIGHT = 0.15
         self.SIDE_LIGTH = 0.1
         self.CAMERA_LIGTH = 0.15
@@ -16,9 +17,9 @@ class ButterySystem:
         if state.is_camera_light:
             drain += self.CAMERA_LIGTH
 
-        state.buttery -= drain
+        self.power -= drain
 
-        if state.buttery < 0:
-            state.buttery = 0
+        if self.power < 0:
+            self.power = 0
             state.light = None
             state.is_camera_light = False

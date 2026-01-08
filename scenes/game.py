@@ -6,9 +6,9 @@ from pynput import keyboard
 from config.sprite_registry import SPRITES
 
 class GameScene(Scene):
-    def __init__(self, app):
+    def __init__(self, app, save_state, params):
         super().__init__(app)
-        self.game = Game()
+        self.game = Game(params["night_num"])
         self.tick_rate = 0.10
         self._last_tick = time.time()
         self.paused = False
@@ -20,13 +20,13 @@ class GameScene(Scene):
                 "game_buttery": {
                     "type": "generated",
                     "data": {
-                        "value": self.game.state.buttery
+                        "value": self.game.state.get_buttery_level()
                     }
                 },
                 "game_timeblock": {
                     "type": "generated",
                     "data": {
-                        "time": self.game.state.time.copy()
+                        "time": self.game.state.time.time.copy()
                     }
                 },
                 "game_nightnumber": {
@@ -73,7 +73,7 @@ class GameScene(Scene):
         
         if processed_frames["delete"]:
             for key in processed_frames["delete"]:
-                self.curr_frame_data["sprites"].pop(key)
+                self.curr_frame_data["sprites"].pop(key, None)
 
         if processed_frames["update"]:
             for key, sprite in processed_frames["update"].items():
@@ -112,7 +112,10 @@ class GameScene(Scene):
         # Light
         if input.was_pressed(keyboard.Key.space):
             if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
-                self.game.state.set_camera_light()
+                if self.game.state.active_camera_num == 11:
+                    self.game.state.music_box.charge()
+                else:
+                    self.game.state.set_camera_light()
             else:
                 self.game.state.set_light("center")
 
