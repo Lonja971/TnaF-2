@@ -80,7 +80,7 @@ class MainMenu(Scene):
         if input.is_held(keyboard.Key.esc):
             exit()
 
-        if input.is_held(keyboard.Key.enter):
+        if input.is_held(keyboard.Key.enter) or input.is_held(keyboard.KeyCode.from_char("z")):
             action = self.options_action[selected_option]
             action()
 

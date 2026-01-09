@@ -42,6 +42,14 @@ SPRITES = {
         "type": "static",
         "path": "game/office/center_light.txt",
     },
+    "game_center_light_big_l": {
+        "type": "static",
+        "path": "game/office/center_light_big_l.txt",
+    },
+    "game_center_light_big_r": {
+        "type": "static",
+        "path": "game/office/center_light_big_r.txt",
+    },
     "game_left_light": {
         "type": "static",
         "path": "game/office/left_light.txt",
@@ -50,6 +58,10 @@ SPRITES = {
         "type": "static",
         "path": "game/office/right_light.txt",
     },
+    "game_right_light_new_bon": {
+        "type": "static",
+        "path": "game/office/anim/vent_r_new_bon.txt",
+    },
     "cameras_bg": {
         "type": "static",
         "path": "game/cameras/bg.txt",
@@ -57,6 +69,82 @@ SPRITES = {
     "camera_map": {
         "type": "static",
         "path": "game/cameras/map.txt",
+    },
+    "cam_1": {
+        "type": "static",
+        "path": "game/cameras/1/def.txt",
+    },
+    "cam_1_l": {
+        "type": "static",
+        "path": "game/cameras/1/def_l.txt",
+    },
+    "cam_2": {
+        "type": "static",
+        "path": "game/cameras/2/def.txt",
+    },
+    "cam_2_l": {
+        "type": "static",
+        "path": "game/cameras/2/def_l.txt",
+    },
+    "cam_2_new_bon_l": {
+        "type": "static",
+        "path": "game/cameras/2/new_bon_l.txt",
+    },
+    "cam_2_old_bird": {
+        "type": "static",
+        "path": "game/cameras/2/old_bird.txt",
+    },
+    "cam_2_old_bird_l": {
+        "type": "static",
+        "path": "game/cameras/2/old_bird_l.txt",
+    },
+    "cam_3": {
+        "type": "static",
+        "path": "game/cameras/3/def.txt",
+    },
+    "cam_3_l": {
+        "type": "static",
+        "path": "game/cameras/3/def_l.txt",
+    },
+    "cam_3_new_bon_l": {
+        "type": "static",
+        "path": "game/cameras/3/new_bon_l.txt",
+    },
+    "cam_4": {
+        "type": "static",
+        "path": "game/cameras/4/def.txt",
+    },
+    "cam_4_l": {
+        "type": "static",
+        "path": "game/cameras/4/def_l.txt",
+    },
+    "cam_4_new_bon": {
+        "type": "static",
+        "path": "game/cameras/4/new_bon.txt",
+    },
+    "cam_4_new_bon_l": {
+        "type": "static",
+        "path": "game/cameras/4/new_bon_l.txt",
+    },
+    "cam_5": {
+        "type": "static",
+        "path": "game/cameras/5/def.txt",
+    },
+    "cam_5_l": {
+        "type": "static",
+        "path": "game/cameras/5/def_l.txt",
+    },
+    "cam_6": {
+        "type": "static",
+        "path": "game/cameras/6/def.txt",
+    },
+    "cam_6_l": {
+        "type": "static",
+        "path": "game/cameras/6/def_l.txt",
+    },
+    "cam_6_new_bon_l": {
+        "type": "static",
+        "path": "game/cameras/6/new_bon_l.txt",
     },
     "cam_7": {
         "type": "static",
@@ -89,6 +177,22 @@ SPRITES = {
     "cam_9_new_bon_l": {
         "type": "static",
         "path": "game/cameras/9/new_bon_l.txt",
+    },
+    "cam_9_new_fred": {
+        "type": "static",
+        "path": "game/cameras/9/new_fred.txt",
+    },
+    "cam_9_new_fred_l": {
+        "type": "static",
+        "path": "game/cameras/9/new_fred_l.txt",
+    },
+    "cam_9_new_bird": {
+        "type": "static",
+        "path": "game/cameras/9/new_bird.txt",
+    },
+    "cam_9_new_bird_l": {
+        "type": "static",
+        "path": "game/cameras/9/new_bird_l.txt",
     },
     "cam_10": {
         "type": "static",
@@ -186,6 +290,15 @@ SPRITES = {
             "game/cameras/not_found/5.txt",
         ],
         "update_in": 0.04,
+        "mode": "loop",
+    },
+    "danger_squard": {
+        "type": "animation",
+        "frames": [
+            "game/danger_squard.txt",
+            "game/transparent.txt",
+        ],
+        "update_in": 0.5,
         "mode": "loop",
     },
 

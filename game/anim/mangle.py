@@ -2,9 +2,9 @@ from game.anim.anim import Anim
 import time
 
 class Mangle(Anim):
-    def __init__(self, intelligence):
+    def __init__(self, intelligence, locations):
         self.name = "mangle"
-        super().__init__(intelligence)
+        super().__init__(intelligence, locations)
 
     def update(self):
         if self.next_move_time == None:

@@ -93,17 +93,30 @@ ROOMS = {
                 "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
+            "danger_squard": {
+                "name": "danger_squard",
+                "x": "right",
+                "y": "top",
+                "z": 21,
+                "padding": {"x": int((300-11)/2), "y": 1}
+            },
             "office_fan_anima": {
                 "name": "office_fan_anima",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,
-                "padding": {"x": -25, "y": 0}
+                "padding": {"x": -14, "y": 0}
             },
+            #"center_light": {
+            #    "name": "game_center_light_big_l",
+            #    "x": 0,
+            #    "y": 0,
+            #    "z": 3,
+            #},
             "center_light": {
                 "name": "game_center_light",
                 "x": 122,
-                "y": 22,
+                "y": 21,
                 "z": 3,
             },
             "left_light": {
@@ -165,17 +178,30 @@ ROOMS = {
                 "z": 20,
                 "padding": {"x": 2, "y": 1}
             },
+            "danger_squard": {
+                "name": "danger_squard",
+                "x": "right",
+                "y": "top",
+                "z": 21,
+                "padding": {"x": int((300-11)/2), "y": 1}
+            },
             "office_fan_anima": {
                 "name": "office_fan_anima",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,
-                "padding": {"x": 35, "y": 0}
+                "padding": {"x": 38, "y": 0}
             },
+            #"center_light": {
+            #    "name": "game_center_light_big_r",
+            #    "x": 0,
+            #    "y": 0,
+            #    "z": 3,
+            #},
             "center_light": {
                 "name": "game_center_light",
-                "x": 61,
-                "y": 22,
+                "x": 70,
+                "y": 21,
                 "z": 3,
             },
             "right_light": {
@@ -183,6 +209,12 @@ ROOMS = {
                 "x": "right",
                 "y": "bottom",
                 "z": 3,
+            },
+            "right_light_new_bon": {
+                "name": "game_right_light_new_bon",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
             },
             "game_mask_on": {
                 "name": "mask_anima_on",
@@ -251,6 +283,13 @@ ROOMS = {
                 "z": 20,
                 "padding": {"x": 2, "y": 5}
             },
+            "danger_squard": {
+                "name": "danger_squard",
+                "x": "right",
+                "y": "bottom",
+                "z": 21,
+                "padding": {"x": 11, "y": 25}
+            },
             "camera_map": {
                 "name": "camera_map",
                 "x": "right",
@@ -262,6 +301,120 @@ ROOMS = {
                 "name": "camera_not_found",
                 "x": "left",
                 "y": "top",
+                "z": 3,
+            },
+            "cam_1": {
+                "name": "cam_1",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_1_l": {
+                "name": "cam_1_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_2": {
+                "name": "cam_2",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_2_l": {
+                "name": "cam_2_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_2_new_bon_l": {
+                "name": "cam_2_new_bon_l",
+                "x": "right",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_2_old_bird": {
+                "name": "cam_2_old_bird",
+                "x": "left",
+                "y": "top",
+                "z": 4,
+            },
+            "cam_2_old_bird_l": {
+                "name": "cam_2_old_bird_l",
+                "x": "left",
+                "y": "top",
+                "z": 4,
+            },
+            "cam_3": {
+                "name": "cam_3",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_3_l": {
+                "name": "cam_3_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_3_new_bon_l": {
+                "name": "cam_3_new_bon_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_4": {
+                "name": "cam_4",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_4_l": {
+                "name": "cam_4_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_4_new_bon": {
+                "name": "cam_4_new_bon",
+                "x": 62,
+                "y": "top",
+                "z": 4,
+            },
+            "cam_4_new_bon_l": {
+                "name": "cam_4_new_bon_l",
+                "x": 62,
+                "y": "top",
+                "z": 4,
+            },
+            "cam_5": {
+                "name": "cam_5",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_5_l": {
+                "name": "cam_5_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_6": {
+                "name": "cam_6",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_6_l": {
+                "name": "cam_6_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+            },
+            "cam_6_new_bon_l": {
+                "name": "cam_6_new_bon_l",
+                "x": "right",
+                "y": "bottom",
                 "z": 3,
             },
             "cam_7": {
@@ -311,6 +464,32 @@ ROOMS = {
                 "x": "left",
                 "y": "top",
                 "z": 3,
+            },
+            "cam_9_new_fred": {
+                "name": "cam_9_new_fred",
+                "x": "left",
+                "y": "top",
+                "z": 4,
+                "padding": {"x": 99, "y": 0}
+            },
+            "cam_9_new_fred_l": {
+                "name": "cam_9_new_fred_l",
+                "x": "left",
+                "y": "top",
+                "z": 4,
+                "padding": {"x": 106, "y": 0}
+            },
+            "cam_9_new_bird": {
+                "name": "cam_9_new_bird",
+                "x": "right",
+                "y": "top",
+                "z": 5,
+            },
+            "cam_9_new_bird_l": {
+                "name": "cam_9_new_bird_l",
+                "x": "right",
+                "y": "top",
+                "z": 5,
             },
             "cam_10": {
                 "name": "cam_10",

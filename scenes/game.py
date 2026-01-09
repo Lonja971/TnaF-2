@@ -44,9 +44,6 @@ class GameScene(Scene):
                         "curr_frame": 0,
                         "last_update": time.time()
                     }
-                },
-                "center_light": {
-                    "type": "static",
                 }
             }
         }
@@ -84,33 +81,33 @@ class GameScene(Scene):
         if input.is_held(keyboard.Key.esc):
             self.app.set_scene("menu")
 
-        if input.was_pressed(keyboard.KeyCode.from_char('a')):
+        if input.was_pressed(keyboard.Key.left):
             if self.game.state.is_camera_open:
                 self.game.state.change_active_camera("prev")
             else:
                 self.game.state.set_office_pos("l")
 
-        if input.was_pressed(keyboard.KeyCode.from_char('d')):
+        if input.was_pressed(keyboard.Key.right):
             if self.game.state.is_camera_open:
                 self.game.state.change_active_camera()
             else:
                 self.game.state.set_office_pos("r")
 
         # Mask / Camera
-        if input.was_pressed(keyboard.KeyCode.from_char('s')):
+        if input.was_pressed(keyboard.Key.down):
             if self.game.state.is_camera_open:
                 self.game.state.start_opening_tablet()
             else:
                 self.game.state.set_mask()
 
-        if input.was_pressed(keyboard.KeyCode.from_char('w')):
+        if input.was_pressed(keyboard.Key.up):
             if self.game.state.is_mask:
                 self.game.state.set_mask()
             else:
                 self.game.state.start_opening_tablet()
 
         # Light
-        if input.was_pressed(keyboard.Key.space):
+        if input.was_pressed(keyboard.KeyCode.from_char('x')):
             if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
                 if self.game.state.active_camera_num == 11:
                     self.game.state.music_box.charge()
@@ -119,20 +116,24 @@ class GameScene(Scene):
             else:
                 self.game.state.set_light("center")
 
-        if input.was_released(keyboard.Key.space):
+        if input.was_released(keyboard.KeyCode.from_char('x')):
             if self.game.state.is_camera_open:
                 self.game.state.set_camera_light(False)
             else:
                 self.game.state.set_light("center", False)
 
-        if input.was_pressed(keyboard.KeyCode.from_char('k')):
-            self.game.state.set_light("left")
+        if input.was_pressed(keyboard.KeyCode.from_char('z')):
+            if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
+                if self.game.state.active_camera_num == 11:
+                    self.game.state.music_box.charge()
+            else:
+                self.game.state.set_light("left")
 
-        if input.was_released(keyboard.KeyCode.from_char('k')):
+        if input.was_released(keyboard.KeyCode.from_char('z')):
             self.game.state.set_light("left", False)
 
-        if input.was_pressed(keyboard.KeyCode.from_char('l')):
+        if input.was_pressed(keyboard.KeyCode.from_char('c')):
             self.game.state.set_light("right")
 
-        if input.was_released(keyboard.KeyCode.from_char('l')):
+        if input.was_released(keyboard.KeyCode.from_char('c')):
             self.game.state.set_light("right", False)

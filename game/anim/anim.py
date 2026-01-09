@@ -3,7 +3,8 @@ import time, random
 from utils.log import debug_log
 
 class Anim:
-    def __init__(self, intelligence):
+    def __init__(self, intelligence, locations):
+        self.locations = locations
         anim_data = ANIMATRONICS[self.name]
         self.def_pos = anim_data["default_position"]
         self.path_graph = anim_data["path_graph"]
@@ -17,6 +18,9 @@ class Anim:
         self.min_activation_time = anim_data["min_activation_time"]
         self.next_move_time = None
 
+        if self.pos not in self.locations:
+            self.locations[self.pos] = []
+        self.locations[self.pos].append(self.name)
 
     def schedule_next_move(self):
         speed = self.intelligence * 0.4
@@ -34,12 +38,21 @@ class Anim:
     def move(self):
         posible_positions = self.path_graph.get(self.pos, [])
         if len(posible_positions) == 0:
-            self.pos = self.def_pos
-            debug_log(f"{self.name} moved to {self.pos}")
+            self.change_pos(self.def_pos)
             return
         
         index = random.randint(1, len(posible_positions))
-        self.pos = posible_positions[index - 1]
+        self.change_pos(posible_positions[index - 1])
+
+    def change_pos(self, new_pos):
+        if self.name in self.locations[self.pos]:
+            self.locations[self.pos].remove(self.name)
+
+        self.pos = new_pos
+
+        if self.pos not in self.locations:
+            self.locations[self.pos] = []
+        self.locations[self.pos].append(self.name)
 
         debug_log(f"{self.name} moved to {self.pos}")
 

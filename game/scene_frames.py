@@ -48,7 +48,7 @@ class GameSceneFrames:
             }
         }
 
-        if self.state.light != "center":
+        if self.state.light == "center":
             frames["sprites"]["center_light"] = {
                 "type": "static"
             }
@@ -85,8 +85,8 @@ class GameSceneFrames:
                     "frames_num": len(SPRITES["tablet_anima_on"]["frames"]),
                     "mode": SPRITES["tablet_anima_on"]["mode"],
                     "data": {
-                        "curr_frame": anim_state.get("curr_frame", {}).get("curr_frame", 0),
-                        "last_update": anim_state.get("last_update", {}).get("last_update", time.time())
+                        "curr_frame": anim_state.get("game_tablet_on", {}).get("curr_frame", 0),
+                        "last_update": anim_state.get("game_tablet_on", {}).get("last_update", time.time())
                     }
                 }
             else:
@@ -96,23 +96,45 @@ class GameSceneFrames:
                     "frames_num": len(SPRITES["tablet_anima_off"]["frames"]),
                     "mode": SPRITES["tablet_anima_off"]["mode"],
                     "data": {
-                        "curr_frame": anim_state.get("curr_frame", {}).get("curr_frame", 0),
-                        "last_update": anim_state.get("last_update", {}).get("last_update", time.time())
+                        "curr_frame": anim_state.get("game_tablet_off", {}).get("curr_frame", 0),
+                        "last_update": anim_state.get("game_tablet_off", {}).get("last_update", time.time())
                     }
                 }
+
+        if self.state.music_box.power < 20:
+            frames["sprites"]["danger_squard"] = {
+                "type": "animation",
+                "update_in": SPRITES["danger_squard"]["update_in"],
+                "frames_num": len(SPRITES["danger_squard"]["frames"]),
+                "mode": SPRITES["danger_squard"]["mode"],
+                "data": {
+                    "curr_frame": anim_state.get("danger_squard", {}).get("curr_frame", 0),
+                    "last_update": anim_state.get("danger_squard", {}).get("last_update", time.time())
+                }
+            }
 
 
         if self.state.office_pos == "l":
             if self.state.light == "left":
-                frames["sprites"]["left_light"] = {
-                    "type": "static"
-                }
+                if self.state.locations.get(16) and len(self.state.locations[16]) > 0:
+                    frames["sprites"][f"left_light_{self.state.locations[16][0]}"] = {
+                        "type": "static"
+                    }
+                else:
+                    frames["sprites"]["left_light"] = {
+                        "type": "static"
+                    }
 
-        if self.state.office_pos == "r":
+        elif self.state.office_pos == "r":
             if self.state.light == "right":
-                frames["sprites"]["right_light"] = {
-                    "type": "static"
-                }
+                if self.state.locations.get(17) and len(self.state.locations[17]) > 0:
+                    frames["sprites"][f"right_light_{self.state.locations[17][0]}"] = {
+                        "type": "static"
+                    }
+                else:
+                    frames["sprites"]["right_light"] = {
+                        "type": "static"
+                    }
 
         return frames
     
@@ -125,29 +147,77 @@ class GameSceneFrames:
         }
         curr_sprites_frames = curr_scene_frames["sprites"]
 
-        if self.state.light == "center" and "center_light" in curr_sprites_frames:
-            frames_data["delete"].append("center_light")
-
-        if not self.state.light == "center" and "center_light" not in curr_sprites_frames:
+        if self.state.light == "center" and "center_light" not in curr_sprites_frames:
             frames_data["update"]["center_light"] = {
                 "type": "static"
             }
 
-        if self.state.office_pos == "l":
-            if self.state.light == "left" and "left_light" not in curr_sprites_frames:
-                frames_data["update"]["left_light"] = {
-                    "type": "static"
+        if not self.state.light == "center" and "center_light" in curr_sprites_frames:
+            frames_data["delete"].append("center_light")
+
+        if self.state.music_box.power < 20 and "danger_squard" not in curr_sprites_frames:
+            frames_data["update"]["danger_squard"] = {
+                "type": "animation",
+                "update_in": SPRITES["danger_squard"]["update_in"],
+                "frames_num": len(SPRITES["danger_squard"]["frames"]),
+                "mode": SPRITES["danger_squard"]["mode"],
+                "data": {
+                    "curr_frame": anim_state.get("curr_frame", {}).get("curr_frame", 0),
+                    "last_update": anim_state.get("last_update", {}).get("last_update", time.time())
                 }
-            elif self.state.light != "left" and "left_light" in curr_sprites_frames:
-                frames_data["delete"].append("left_light")
+            }
+        if self.state.music_box.power >= 20 and "danger_squard" in curr_sprites_frames:
+            frames_data["delete"].append("danger_squard")
+
+        if self.state.office_pos == "l":
+            if self.state.light == "left":
+                all_anims = self.state.locations.get(16, [])
+                if len(all_anims) > 0:
+                    if f"left_light_{all_anims[0]}" not in curr_sprites_frames:
+                        frames_data["update"][f"left_light_{all_anims[0]}"] = {
+                            "type": "static",
+                        }
+                else:
+                    if "left_light" not in curr_sprites_frames:
+                        frames_data["update"]["left_light"] = {
+                            "type": "static",
+                        }
+
+                    for key in list(curr_sprites_frames.keys()):
+                        if key.startswith("left_light_"):
+                            frames_data["delete"].append(key)
+            else:
+                if "left_light" in curr_sprites_frames:
+                    frames_data["delete"].append("left_light")
+
+                for key in list(curr_sprites_frames.keys()):
+                    if key.startswith("left_light_"):
+                        frames_data["delete"].append(key)
 
         if self.state.office_pos == "r":
-            if self.state.light == "right" and "right_light" not in curr_sprites_frames:
-                frames_data["update"]["right_light"] = {
-                    "type": "static"
-                }
-            elif self.state.light != "right" and "right_light" in curr_sprites_frames:
-                frames_data["delete"].append("right_light")
+            if self.state.light == "right":
+                all_anims = self.state.locations.get(17, [])
+                if len(all_anims) > 0:
+                    if f"right_light_{all_anims[0]}" not in curr_sprites_frames:
+                        frames_data["update"][f"right_light_{all_anims[0]}"] = {
+                            "type": "static",
+                        }
+                else:
+                    if "right_light" not in curr_sprites_frames:
+                        frames_data["update"]["right_light"] = {
+                            "type": "static",
+                        }
+
+                    for key in list(curr_sprites_frames.keys()):
+                        if key.startswith("right_light_"):
+                            frames_data["delete"].append(key)
+            else:
+                if "right_light" in curr_sprites_frames:
+                    frames_data["delete"].append("right_light")
+
+                for key in list(curr_sprites_frames.keys()):
+                    if key.startswith("right_light_"):
+                        frames_data["delete"].append(key)
 
         if curr_sprites_frames["game_buttery"]["data"]["value"] != int(self.state.get_buttery_level()):
             frames_data["update"]["game_buttery"] = {
@@ -229,7 +299,7 @@ class GameSceneFrames:
 
         return frames_data
     
-    def camera_frames(self, curr_scene_frames):
+    def camera_frames(self, curr_scene_frames, anim_state):
         active_cam_name = f"cam_{self.state.active_camera_num}"
 
         frames = {
@@ -267,6 +337,18 @@ class GameSceneFrames:
                 "type": "generated",
                 "data": {
                     "power": int(self.state.music_box.power)
+                }
+            }
+
+        if self.state.music_box.power < 20:
+            frames["sprites"]["danger_squard"] = {
+                "type": "animation",
+                "update_in": SPRITES["danger_squard"]["update_in"],
+                "frames_num": len(SPRITES["danger_squard"]["frames"]),
+                "mode": SPRITES["danger_squard"]["mode"],
+                "data": {
+                    "curr_frame": anim_state.get("danger_squard", {}).get("curr_frame", 0),
+                    "last_update": anim_state.get("danger_squard", {}).get("last_update", time.time())
                 }
             }
 
@@ -308,7 +390,7 @@ class GameSceneFrames:
 
         return frames
     
-    def update_camera_frames(self, curr_scene_frames):
+    def update_camera_frames(self, curr_scene_frames, anim_state):
         active_cam_name = f"cam_{self.state.active_camera_num}"
         allowed = {active_cam_name, f"{active_cam_name}_l"}
         curr_sprites_frames = curr_scene_frames["sprites"]
@@ -335,6 +417,20 @@ class GameSceneFrames:
         else:
             if "music_box_power" in curr_sprites_frames:
                 frames_data["delete"].append("music_box_power")
+
+        if self.state.music_box.power < 20 and "danger_squard" not in curr_sprites_frames:
+            frames_data["update"]["danger_squard"] = {
+                "type": "animation",
+                "update_in": SPRITES["danger_squard"]["update_in"],
+                "frames_num": len(SPRITES["danger_squard"]["frames"]),
+                "mode": SPRITES["danger_squard"]["mode"],
+                "data": {
+                    "curr_frame": 0,
+                    "last_update": time.time()
+                }
+            }
+        if self.state.music_box.power >= 20 and "danger_squard" in curr_sprites_frames:
+            frames_data["delete"].append("danger_squard")
 
         if curr_sprites_frames["camera_map"]["data"]["active_cam"] != self.state.active_camera_num:
             frames_data["update"]["camera_map"] = {
@@ -444,9 +540,9 @@ class GameSceneFrames:
         else:
             if self.last_scene != "camera":
                 frames_data["rewrite"] = True
-                frames_data["update"] = self.camera_frames(curr_scene_frames)
+                frames_data["update"] = self.camera_frames(curr_scene_frames, anim_state)
             else:
-                updated_frames = self.update_camera_frames(curr_scene_frames)
+                updated_frames = self.update_camera_frames(curr_scene_frames, anim_state)
                 frames_data["update"] = updated_frames["update"]
                 frames_data["delete"] = updated_frames["delete"]
 
