@@ -101,7 +101,7 @@ ROOMS = {
                 "padding": {"x": int((300-11)/2), "y": 1}
             },
             "office_fan_anima": {
-                "name": "office_fan_anima",
+                "name": "6am",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,

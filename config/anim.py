@@ -1,5 +1,5 @@
 ANIMATRONICS = {
-    "new_bon": {
+    "new_bon": {     #     +
         "default_position": 9,
         "path_graph": {
             9: [3],
@@ -13,7 +13,7 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "new_fred": {
+    "new_fred": {     #     +
         "default_position": 9,
         "path_graph": {
             9: [10],
@@ -25,7 +25,7 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "new_bird": {
+    "new_bird": {     #     +
         "default_position": 9,
         "path_graph": {
             9: [7],
@@ -89,8 +89,8 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "mangle": {
-        "default_position": 17,
+    "mangle": {     #     +
+        "default_position": 12,
         "path_graph": {
             12: [11],
             11: [10],
