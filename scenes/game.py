@@ -5,6 +5,21 @@ import time
 from pynput import keyboard
 from config.sprite_registry import SPRITES
 
+CAMERA_KEYBINDS = {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "0": 10,
+    "-": 11,
+    "=": 12,
+}
+
 class GameScene(Scene):
     def __init__(self, app, save_state, params):
         super().__init__(app)
@@ -144,3 +159,9 @@ class GameScene(Scene):
 
         if input.was_released(keyboard.KeyCode.from_char('c')):
             self.game.state.set_light("right", False)
+
+        if self.game.state.is_camera_open:
+            for key_char, cam_num in CAMERA_KEYBINDS.items():
+                if input.was_pressed(keyboard.KeyCode.from_char(key_char)):
+                    self.game.state.change_active_camera(cam_num)
+                    break

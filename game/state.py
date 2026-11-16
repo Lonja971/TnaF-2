@@ -139,7 +139,8 @@ class GameState:
                 self.active_camera_num = 1
             
         elif isinstance(cam, int):
-            pass
+            if 13 > cam > 0:
+                self.active_camera_num = cam
 
     def screamer_disabeling(self):
         self.is_mask_disabled = True

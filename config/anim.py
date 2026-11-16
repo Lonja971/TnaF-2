@@ -1,6 +1,6 @@
 ANIMATRONICS = {
     "new_bon": {
-        "default_position": 2,
+        "default_position": 9,
         "path_graph": {
             9: [3],
             3: [4],
@@ -26,7 +26,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "new_bird": {
-        "default_position": 9,
+        "default_position": 5,
         "path_graph": {
             9: [7],
             7: [4],
@@ -55,7 +55,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "old_fred": {
-        "default_position": 7,
+        "default_position": 8,
         "path_graph": {
             8: [7],
             7:[3],
