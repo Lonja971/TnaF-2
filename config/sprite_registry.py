@@ -62,6 +62,10 @@ SPRITES = {
         "type": "static",
         "path": "game/office/anim/vent_r_new_bon.txt",
     },
+    "game_right_light_mangle": {
+        "type": "static",
+        "path": "game/office/anim/vent_r_mangle.txt",
+    },
     "game_left_light_new_bird": {
         "type": "static",
         "path": "game/office/anim/vent_l_new_bird.txt",
@@ -93,6 +97,10 @@ SPRITES = {
     "cam_2_l": {
         "type": "static",
         "path": "game/cameras/2/def_l.txt",
+    },
+    "cam_2_mangle": {
+        "type": "static",
+        "path": "game/cameras/2/mangle.txt",
     },
     "cam_2_new_bon_l": {
         "type": "static",
@@ -162,6 +170,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/6/new_bon_l.txt",
     },
+    "cam_6_mangle_l": {
+        "type": "static",
+        "path": "game/cameras/6/mangle_l.txt",
+    },
     "cam_7": {
         "type": "static",
         "path": "game/cameras/7/def.txt",
@@ -169,6 +181,10 @@ SPRITES = {
     "cam_7_l": {
         "type": "static",
         "path": "game/cameras/7/def_l.txt",
+    },
+    "cam_7_mangle": {
+        "type": "static",
+        "path": "game/cameras/7/mangle.txt",
     },
     "cam_7_old_fred_l": {
         "type": "static",
@@ -230,6 +246,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/10/def_l.txt",
     },
+    "cam_10_mangle": {
+        "type": "static",
+        "path": "game/cameras/10/mangle.txt",
+    },
     "cam_10_bb": {
         "type": "static",
         "path": "game/cameras/10/bb.txt",
@@ -245,6 +265,10 @@ SPRITES = {
     "cam_11": {
         "type": "static",
         "path": "game/cameras/11/def.txt",
+    },
+    "cam_11_mangle": {
+        "type": "static",
+        "path": "game/cameras/11/mangle.txt",
     },
     "cam_11_puppet1": {
         "type": "static",
@@ -402,12 +426,20 @@ SPRITES = {
         "update_in": 0.03,
         "mode": "hold"
     },
-    "check_old_bon": {
+    "check_new_fred": {
         "type": "animation",
         "frames": [
-            "game/check/new_bon/orig.txt",
+            "game/check/new_fred.txt",
         ],
         "update_in": 0.01,
+        "mode": "hold"
+    },
+    "check_mangle": {
+        "type": "animation",
+        "frames": [
+            "game/check/mangle.txt",
+        ],
+        "update_in": 1,
         "mode": "hold"
     },
     "screamer_new_bon": {

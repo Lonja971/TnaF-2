@@ -26,7 +26,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "new_bird": {
-        "default_position": 5,
+        "default_position": 9,
         "path_graph": {
             9: [7],
             7: [4],
@@ -90,7 +90,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "mangle": {
-        "default_position": 12,
+        "default_position": 17,
         "path_graph": {
             12: [11],
             11: [10],
