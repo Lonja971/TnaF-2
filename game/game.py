@@ -9,6 +9,12 @@ class Game:
         self.scene_frames = GameSceneFrames(self.state, self.night)
 
     def update_states(self, dt):
+        if self.state.time.is_end_night():
+            if not self.state.is_night_progress_saved:
+                self.state.save_completed_night()
+
+            self.state.state = "end"
+
         if self.state.state == "end": return
 
         for name, anim_class in self.state.animatronics.items():

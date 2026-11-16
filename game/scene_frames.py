@@ -638,6 +638,25 @@ class GameSceneFrames:
 
         return frames_data
 
+    def am6_frames(self):
+        frames = {
+            "room": "6am",
+            "sprites": {
+                "6am_anima": {
+                    "type": "animation",
+                    "update_in": SPRITES["6am_anima"]["update_in"],
+                    "frames_num": len(SPRITES["6am_anima"]["frames"]),
+                    "mode": SPRITES["6am_anima"]["mode"],
+                    "data": {
+                        "curr_frame": 0,
+                        "last_update": time.time()
+                    }
+                }
+            }
+        }
+
+        return frames
+
     def process_scene_frames(self, curr_scene_frames, anim_state):
         if self.last_scene == None: self.last_scene = curr_scene_frames["room"]
 
@@ -648,15 +667,26 @@ class GameSceneFrames:
         }
 
         if self.state.state == "end":
-            if self.last_scene != "game_over":
-                frames_data["rewrite"] = True
-                frames_data["update"] = self.game_over_frames()
-            else:
-                updated_frames = self.update_game_over_frames(curr_scene_frames, anim_state)
-                frames_data["update"] = updated_frames["update"]
-                frames_data["delete"] = updated_frames["delete"]
+            if self.state.time.is_end_night():
+                if self.last_scene != "6am":
+                    frames_data["rewrite"] = True
+                    frames_data["update"] = self.am6_frames()
+                #else:
+                    #updated_frames = self.update_game_over_frames(curr_scene_frames, anim_state)
+                    #frames_data["update"] = updated_frames["update"]
+                    #frames_data["delete"] = updated_frames["delete"]
 
-            self.last_scene = "game_over"
+                self.last_scene = "6am"
+            else:
+                if self.last_scene != "game_over":
+                    frames_data["rewrite"] = True
+                    frames_data["update"] = self.game_over_frames()
+                else:
+                    updated_frames = self.update_game_over_frames(curr_scene_frames, anim_state)
+                    frames_data["update"] = updated_frames["update"]
+                    frames_data["delete"] = updated_frames["delete"]
+
+                self.last_scene = "game_over"
 
         elif self.state.is_camera_open == False:
             if self.last_scene != f"game_office_{self.state.office_pos}":

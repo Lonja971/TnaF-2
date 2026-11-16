@@ -2,6 +2,7 @@ from .systems.buttery import ButterySystem
 from .systems.music_box import MusicBox
 from .systems.time import TimeSystem
 from utils.log import debug_log
+from utils.save import save_config, load_config
 from config.nights import NIGHTS
 from game.anim.new_bon import NewBon
 from game.anim.new_fred import NewFred
@@ -17,6 +18,7 @@ from game.anim.puppet import Puppet
 class GameState:
     def __init__(self, night_num):
         self.state = "processing" # screamer_anima / end
+        self.night_num = night_num
         self.screamer_anima_name = None
         self.buttery = ButterySystem()
         self.music_box = MusicBox(1)
@@ -48,6 +50,8 @@ class GameState:
 
         self.is_mask_disabled = False
         self.is_tablet_disabled = False
+
+        self.is_night_progress_saved = False
 
     def get_buttery_level(self):
         return self.buttery.power
@@ -150,3 +154,11 @@ class GameState:
             self.is_camera_open = False
             self.tablet_anim_dir = "close"
             self.is_tablet_opening_anim = True
+
+    def save_completed_night(self):
+        config = load_config("save.json")
+        if config["record_night"] < self.night_num:
+            config["record_night"] == self.night_num
+        config["curr_night"] += self.night_num
+        save_config("save.json", config)
+        self.is_night_progress_saved = True

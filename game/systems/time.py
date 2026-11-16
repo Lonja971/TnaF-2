@@ -6,6 +6,12 @@ class TimeSystem:
         self.time = [12, 0]
         self.miliseconds = 0
 
+    def is_end_night(self):
+        if self.time[0] >= 6 and (self.time[0] is not 12):
+            return True
+        else:
+            return False
+
     def update(self, state):
         ms_total = self.MS_TICK + self.miliseconds
 

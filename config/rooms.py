@@ -101,7 +101,7 @@ ROOMS = {
                 "padding": {"x": int((300-11)/2), "y": 1}
             },
             "office_fan_anima": {
-                "name": "6am",
+                "name": "office_fan_anima",
                 "x": "right",
                 "y": "bottom",
                 "z": 6,
@@ -862,4 +862,17 @@ ROOMS = {
             },
         }
     },
+    "6am": {
+        "bg": {
+            "name": "game_over_bg"
+        },
+        "sprites": {
+            "6am_anima": {
+                "name": "6am_anima",
+                "x": "left",
+                "y": "top",
+                "z": 6,
+            },
+        }
+    }
 }
