@@ -136,13 +136,13 @@ class GameScene(Scene):
                 else:
                     self.game.state.set_camera_light()
             else:
-                self.game.state.set_light("center")
+                self.game.state.set_light("centre")
 
         if input.was_released(keyboard.KeyCode.from_char('x')):
             if self.game.state.is_camera_open:
                 self.game.state.set_camera_light(False)
             else:
-                self.game.state.set_light("center", False)
+                self.game.state.set_light("centre", False)
 
         if input.was_pressed(keyboard.KeyCode.from_char('z')):
             if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:

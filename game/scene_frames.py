@@ -61,10 +61,16 @@ class GameSceneFrames:
                 }
             }
 
-        if self.state.light == "center":
-            frames["sprites"]["center_light"] = {
+        if self.state.light == "centre":
+            frames["sprites"]["centre_light"] = {
                 "type": "static"
             }
+
+            for location in (13, 14):
+                for name in self.state.locations.get(location, []):
+                    frames["sprites"][f"centre_light_{location}_{name}"] = {
+                        "type": "static"
+                    }
 
         if self.state.is_removing_mask:
             frames["sprites"]["game_mask_off"] = {
@@ -174,13 +180,33 @@ class GameSceneFrames:
         }
         curr_sprites_frames = curr_scene_frames["sprites"]
 
-        if self.state.light == "center" and "center_light" not in curr_sprites_frames:
-            frames_data["update"]["center_light"] = {
-                "type": "static"
+        def update_centre_animatronics():
+            anim_sprites = {
+                f"centre_light_{location}_{name}"
+                for location in (13, 14)
+                for name in self.state.locations.get(location, [])
             }
 
-        if not self.state.light == "center" and "center_light" in curr_sprites_frames:
-            frames_data["delete"].append("center_light")
+            for sprite_name in anim_sprites:
+                if sprite_name not in curr_sprites_frames:
+                    frames_data["update"][sprite_name] = {
+                        "type": "static"
+                    }
+
+            for sprite_name in curr_sprites_frames:
+                if sprite_name.startswith("centre_light_") and sprite_name not in anim_sprites:
+                    frames_data["delete"].append(sprite_name)
+
+        if self.state.light == "centre":
+            if "centre_light" not in curr_sprites_frames:
+                frames_data["update"]["centre_light"] = {
+                    "type": "static"
+                }
+            update_centre_animatronics()
+        else:
+            for sprite_name in curr_sprites_frames:
+                if sprite_name == "centre_light" or sprite_name.startswith("centre_light_"):
+                    frames_data["delete"].append(sprite_name)
 
         if self.state.music_box.power < 20 and "danger_squard" not in curr_sprites_frames:
             frames_data["update"]["danger_squard"] = {
@@ -671,10 +697,6 @@ class GameSceneFrames:
                 if self.last_scene != "6am":
                     frames_data["rewrite"] = True
                     frames_data["update"] = self.am6_frames()
-                #else:
-                    #updated_frames = self.update_game_over_frames(curr_scene_frames, anim_state)
-                    #frames_data["update"] = updated_frames["update"]
-                    #frames_data["delete"] = updated_frames["delete"]
 
                 self.last_scene = "6am"
             else:

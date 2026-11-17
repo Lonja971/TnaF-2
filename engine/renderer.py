@@ -33,7 +33,7 @@ class Renderer:
                 y = pad_y
             elif y == "bottom":
                 y = self.win_h - sprite_h - pad_y
-            elif y == "center":
+            elif y == "centre":
                 y = (self.win_h - sprite_h) // 2 + pad_y
             else:
                 raise ValueError(f"Unknown y alignment '{y}'")
@@ -47,7 +47,7 @@ class Renderer:
                 x = pad_x
             elif x == "right":
                 x = self.win_w - sprite_w - pad_x
-            elif x == "center":
+            elif x == "centre":
                 x = (self.win_w - sprite_w) // 2 + pad_x
             else:
                 raise ValueError(f"Unknown x alignment '{x}'")

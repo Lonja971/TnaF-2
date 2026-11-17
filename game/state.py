@@ -158,7 +158,9 @@ class GameState:
     def save_completed_night(self):
         config = load_config("save.json")
         if config["record_night"] < self.night_num:
-            config["record_night"] == self.night_num
-        config["curr_night"] += self.night_num
+            config["record_night"] = self.night_num
+        config["curr_night"] = self.night_num + 1
+        debug_log(config)
         save_config("save.json", config)
+
         self.is_night_progress_saved = True

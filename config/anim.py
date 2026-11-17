@@ -26,7 +26,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "new_bird": {     #     +
-        "default_position": 9,
+        "default_position": 4,
         "path_graph": {
             9: [7],
             7: [4],
@@ -79,9 +79,8 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "old_foxy": {
-        "default_position": 18,
+        "default_position": 8,
         "path_graph": {
-            18: [13, 8],
             8: [13],
             13: [15],
         },

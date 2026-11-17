@@ -107,17 +107,23 @@ ROOMS = {
                 "z": 6,
                 "padding": {"x": -14, "y": 0}
             },
-            #"center_light": {
-            #    "name": "game_center_light_big_l",
+            #"centre_light": {
+            #    "name": "game_centre_light_big_l",
             #    "x": 0,
             #    "y": 0,
             #    "z": 3,
             #},
-            "center_light": {
-                "name": "game_center_light",
+            "centre_light": {
+                "name": "game_centre_light",
                 "x": 122,
                 "y": 21,
                 "z": 3,
+            },
+            "centre_light_13_new_bird": {
+                "name": "game_centre_13_new_bird",
+                "x": "left",
+                "y": "top",
+                "z": 20,
             },
             "left_light": {
                 "name": "game_left_light",
@@ -280,11 +286,17 @@ ROOMS = {
                 "z": 6,
                 "padding": {"x": 38, "y": 0}
             },
-            "center_light": {
-                "name": "game_center_light",
+            "centre_light": {
+                "name": "game_centre_light",
                 "x": 70,
                 "y": 21,
                 "z": 3,
+            },
+            "centre_light_13_new_bird": {
+                "name": "game_centre_13_new_bird",
+                "x": "left",
+                "y": "top",
+                "z": 20,
             },
             "right_light": {
                 "name": "game_right_light",

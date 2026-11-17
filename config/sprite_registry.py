@@ -38,17 +38,21 @@ SPRITES = {
         "type": "static",
         "path": "game/office/r.txt",
     },
-    "game_center_light": {
+    "game_centre_light": {
         "type": "static",
-        "path": "game/office/center_light.txt",
+        "path": "game/office/centre_light.txt",
     },
-    "game_center_light_big_l": {
+    "game_centre_light_big_l": {
         "type": "static",
-        "path": "game/office/center_light_big_l.txt",
+        "path": "game/office/centre_light_big_l.txt",
     },
-    "game_center_light_big_r": {
+    "game_centre_light_big_r": {
         "type": "static",
-        "path": "game/office/center_light_big_r.txt",
+        "path": "game/office/centre_light_big_r.txt",
+    },
+    "game_centre_13_new_bird": {
+        "type": "static",
+        "path": "game/office/centre/13_new_bird.txt",
     },
     "game_left_light": {
         "type": "static",
