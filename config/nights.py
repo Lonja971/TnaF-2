@@ -7,12 +7,12 @@ NIGHTS = {
             #"new_bird" : {
             #    "intelligence": 20
             #},
-            #"new_fred" : {
-            #    "intelligence": 2
-            #},
-            "new_bird" : {
-                "intelligence": 20
+            "new_fred" : {
+                "intelligence": 2
             },
+            #"new_bird" : {
+            #    "intelligence": 1
+            #},
         }
     }
 }

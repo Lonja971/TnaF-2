@@ -26,7 +26,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "new_bird": {     #     +
-        "default_position": 4,
+        "default_position": 9,
         "path_graph": {
             9: [7],
             7: [4],
@@ -79,8 +79,9 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "old_foxy": {
-        "default_position": 8,
+        "default_position": 18,
         "path_graph": {
+            18: [8],
             8: [13],
             13: [15],
         },
@@ -95,7 +96,8 @@ ANIMATRONICS = {
             11: [10],
             10: [7],
             7: [13],
-            13: [1, 2],  # holl closer?
+            13: [1, 2, 14],
+            14: [15],
             1: [2],
             2: [6],
             6: [17],
@@ -116,7 +118,7 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "puppet": {
+    "puppet": { #    +
         "default_position": 11,
         "path_graph": {
             11: [15]

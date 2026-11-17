@@ -107,23 +107,41 @@ ROOMS = {
                 "z": 6,
                 "padding": {"x": -14, "y": 0}
             },
-            #"centre_light": {
-            #    "name": "game_centre_light_big_l",
-            #    "x": 0,
-            #    "y": 0,
-            #    "z": 3,
-            #},
             "centre_light": {
                 "name": "game_centre_light",
                 "x": 122,
                 "y": 21,
                 "z": 3,
-            },
+            }, # різниця в пікселях: 52px | x
             "centre_light_13_new_bird": {
                 "name": "game_centre_13_new_bird",
-                "x": "left",
-                "y": "top",
-                "z": 20,
+                "x": 162,
+                "y": 37,
+                "z": 4,
+            },
+            "centre_light_13_new_fred": {
+                "name": "game_centre_13_new_fred",
+                "x": 162,
+                "y": 30,
+                "z": 4,
+            },
+            "centre_light_13_mangle": {
+                "name": "game_centre_13_mangle",
+                "x": 177,
+                "y": 35,
+                "z": 4,
+            },
+            "centre_light_14_new_fred": {
+                "name": "game_centre_14_new_fred",
+                "x": 177,
+                "y": 30,
+                "z": 5,
+            },
+            "centre_light_14_mangle": {
+                "name": "game_centre_14_mangle",
+                "x": 182,
+                "y": 29,
+                "z": 5,
             },
             "left_light": {
                 "name": "game_left_light",
@@ -294,9 +312,33 @@ ROOMS = {
             },
             "centre_light_13_new_bird": {
                 "name": "game_centre_13_new_bird",
-                "x": "left",
-                "y": "top",
-                "z": 20,
+                "x": 110,
+                "y": 37,
+                "z": 4,
+            },
+            "centre_light_13_new_fred": {
+                "name": "game_centre_13_new_fred",
+                "x": 110,
+                "y": 30,
+                "z": 4,
+            },
+            "centre_light_13_mangle": {
+                "name": "game_centre_13_mangle",
+                "x": 125,
+                "y": 35,
+                "z": 4,
+            },
+            "centre_light_14_new_fred": {
+                "name": "game_centre_14_new_fred",
+                "x": 125,
+                "y": 30,
+                "z": 5,
+            },
+            "centre_light_14_mangle": {
+                "name": "game_centre_14_mangle",
+                "x": 130,
+                "y": 29,
+                "z": 5,
             },
             "right_light": {
                 "name": "game_right_light",

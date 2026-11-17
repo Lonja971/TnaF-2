@@ -54,6 +54,22 @@ SPRITES = {
         "type": "static",
         "path": "game/office/centre/13_new_bird.txt",
     },
+    "game_centre_13_new_fred": {
+        "type": "static",
+        "path": "game/office/centre/13_new_fred.txt",
+    },
+    "game_centre_13_mangle": {
+        "type": "static",
+        "path": "game/office/centre/13_mangle.txt",
+    },
+    "game_centre_14_new_fred": {
+        "type": "static",
+        "path": "game/office/centre/14_new_fred.txt",
+    },
+    "game_centre_14_mangle": {
+        "type": "static",
+        "path": "game/office/centre/14_mangle.txt",
+    },
     "game_left_light": {
         "type": "static",
         "path": "game/office/left_light.txt",
