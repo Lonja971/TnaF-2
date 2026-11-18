@@ -54,7 +54,7 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "old_fred": {
+    "old_fred": {  #      +
         "default_position": 8,
         "path_graph": {
             8: [7],
@@ -108,7 +108,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "bb": {
-        "default_position": 10,
+        "default_position": 15,
         "path_graph": {
             10: [5],
             5: [16],

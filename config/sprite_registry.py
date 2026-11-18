@@ -190,6 +190,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/4/new_bird_l.txt",
     },
+    "cam_4_old_bird_l": {
+        "type": "static",
+        "path": "game/cameras/4/old_bird_l.txt",
+    },
     "cam_5": {
         "type": "static",
         "path": "game/cameras/5/def.txt",
@@ -206,6 +210,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/5/old_bon_l.txt",
     },
+    "cam_5_bb_l": {
+        "type": "static",
+        "path": "game/cameras/5/bb_l.txt",
+    },
     "cam_6": {
         "type": "static",
         "path": "game/cameras/6/def.txt",
@@ -221,6 +229,10 @@ SPRITES = {
     "cam_6_mangle_l": {
         "type": "static",
         "path": "game/cameras/6/mangle_l.txt",
+    },
+    "cam_6_old_bird_l": {
+        "type": "static",
+        "path": "game/cameras/6/old_bird_l.txt",
     },
     "cam_7": {
         "type": "static",
@@ -524,6 +536,22 @@ SPRITES = {
             "game/check/old_fred.txt",
         ],
         "update_in": 1,
+        "mode": "hold"
+    },
+    "check_old_bird": {
+        "type": "animation",
+        "frames": [
+            "game/check/old_bird.txt",
+        ],
+        "update_in": 1,
+        "mode": "hold"
+    },
+    "check_bb": {
+        "type": "animation",
+        "frames": [
+            "game/check/bb.txt",
+        ],
+        "update_in": 10,
         "mode": "hold"
     },
     "screamer_new_bon": {
