@@ -70,6 +70,10 @@ SPRITES = {
         "type": "static",
         "path": "game/office/centre/14_old_bon.txt",
     },
+    "game_centre_14_old_fred": {
+        "type": "static",
+        "path": "game/office/centre/14_old_fred.txt",
+    },
     "game_centre_14_new_fred": {
         "type": "static",
         "path": "game/office/centre/14_new_fred.txt",
@@ -153,6 +157,14 @@ SPRITES = {
     "cam_3_l": {
         "type": "static",
         "path": "game/cameras/3/def_l.txt",
+    },
+    "cam_3_old_fred": {
+        "type": "static",
+        "path": "game/cameras/3/old_fred.txt",
+    },
+    "cam_3_old_fred_l": {
+        "type": "static",
+        "path": "game/cameras/3/old_fred_l.txt",
     },
     "cam_3_new_bon_l": {
         "type": "static",
@@ -253,6 +265,10 @@ SPRITES = {
     "cam_8_old_bird_l": {
         "type": "static",
         "path": "game/cameras/8/old_bird_l.txt",
+    },
+    "cam_8_old_fred_l": {
+        "type": "static",
+        "path": "game/cameras/8/old_fred_l.txt",
     },
     "cam_8_old_foxy_l": {
         "type": "static",
@@ -483,7 +499,7 @@ SPRITES = {
         "frames": [
             "game/check/new_fred.txt",
         ],
-        "update_in": 0.01,
+        "update_in": 1,
         "mode": "hold"
     },
     "check_mangle": {
@@ -498,6 +514,14 @@ SPRITES = {
         "type": "animation",
         "frames": [
             "game/check/old_bon.txt",
+        ],
+        "update_in": 1,
+        "mode": "hold"
+    },
+    "check_old_fred": {
+        "type": "animation",
+        "frames": [
+            "game/check/old_fred.txt",
         ],
         "update_in": 1,
         "mode": "hold"

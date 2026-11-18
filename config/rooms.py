@@ -143,6 +143,12 @@ ROOMS = {
                 "y": 35,
                 "z": 5,
             },
+            "centre_light_14_old_fred": {
+                "name": "game_centre_14_old_fred",
+                "x": 155,
+                "y": 30,
+                "z": 5,
+            },
             "centre_light_14_new_fred": {
                 "name": "game_centre_14_new_fred",
                 "x": 177,
@@ -209,22 +215,29 @@ ROOMS = {
                 "name": "check_new_fred",
                 "x": "right",
                 "y": "bottom",
-                "z": 2,
+                "z": 7,
                 "padding": {"x": 40, "y": 0}
             },
             "check_mangle": {
                 "name": "check_mangle",
                 "x": "right",
                 "y": "top",
-                "z": 4,
+                "z": 6,
                 "padding": {"x": 20, "y": 0}
             },
             "check_old_bon": {
                 "name": "check_old_bon",
                 "x": "right",
                 "y": "bottom",
-                "z": 2,
+                "z": 6,
                 "padding": {"x": 85, "y": 0}
+            },
+            "check_old_fred": {
+                "name": "check_old_fred",
+                "x": "right",
+                "y": "bottom",
+                "z": 6,
+                "padding": {"x": 78, "y": 0}
             },
             "screamer_new_bon": {
                 "name": "screamer_new_bon",
@@ -359,6 +372,12 @@ ROOMS = {
                 "y": 35,
                 "z": 5,
             },
+            "centre_light_14_old_fred": {
+                "name": "game_centre_14_old_fred",
+                "x": 103,
+                "y": 30,
+                "z": 5,
+            },
             "centre_light_14_new_fred": {
                 "name": "game_centre_14_new_fred",
                 "x": 125,
@@ -424,14 +443,14 @@ ROOMS = {
                 "name": "check_mangle",
                 "x": "right",
                 "y": "top",
-                "z": 4,
+                "z": 6,
                 "padding": {"x": 70, "y": 0}
             },
             "check_new_fred": {
                 "name": "check_new_fred",
                 "x": "right",
                 "y": "bottom",
-                "z": 2,
+                "z": 7,
                 "padding": {"x": 95, "y": 0}
             },
             "check_new_bird": {
@@ -445,8 +464,15 @@ ROOMS = {
                 "name": "check_old_bon",
                 "x": "right",
                 "y": "bottom",
-                "z": 2,
+                "z": 6,
                 "padding": {"x": 137, "y": 0}
+            },
+            "check_old_fred": {
+                "name": "check_old_fred",
+                "x": "right",
+                "y": "bottom",
+                "z": 6,
+                "padding": {"x": 130, "y": 0}
             },
             "screamer_new_bon": {
                 "name": "screamer_new_bon",
@@ -664,6 +690,18 @@ ROOMS = {
                 "y": "top",
                 "z": 3,
             },
+            "cam_3_old_fred": {
+                "name": "cam_3_old_fred",
+                "x": "left",
+                "y": "top",
+                "z": 4,
+            },
+            "cam_3_old_fred_l": {
+                "name": "cam_3_old_fred_l",
+                "x": "right",
+                "y": "top",
+                "z": 4,
+            },
             "cam_4": {
                 "name": "cam_4",
                 "x": "left",
@@ -820,6 +858,13 @@ ROOMS = {
                 "x": 0,
                 "y": 23,
                 "z": 4,
+            },
+            "cam_8_old_fred_l": {
+                "name": "cam_8_old_fred_l",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 91, "y": 32}
             },
             "cam_8_old_foxy_l": {
                 "name": "cam_8_old_foxy_l",

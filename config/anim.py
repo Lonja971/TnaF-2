@@ -40,8 +40,8 @@ ANIMATRONICS = {
         "checking_time": 50,
         "office_time": 5
     },
-    "old_bon": {
-        "default_position": 15,
+    "old_bon": {  #    +
+        "default_position": 7,
         "path_graph": {
             8: [7],
             7: [13],
@@ -79,7 +79,7 @@ ANIMATRONICS = {
         "office_time": 5
     },
     "old_foxy": { #      +
-        "default_position": 8,
+        "default_position": 18,
         "path_graph": {
             18: [8],
             8: [13],
