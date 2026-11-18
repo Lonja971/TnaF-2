@@ -112,7 +112,13 @@ ROOMS = {
                 "x": 122,
                 "y": 21,
                 "z": 3,
-            }, # різниця в пікселях: 52px | x
+            },
+            "centre_light_13_old_foxy": {
+                "name": "game_centre_13_foxy",
+                "x": 158,
+                "y": 37,
+                "z": 4,
+            },
             "centre_light_13_new_bird": {
                 "name": "game_centre_13_new_bird",
                 "x": 162,
@@ -130,6 +136,12 @@ ROOMS = {
                 "x": 177,
                 "y": 35,
                 "z": 4,
+            },
+            "centre_light_14_old_bon": {
+                "name": "game_centre_14_old_bon",
+                "x": 177,
+                "y": 35,
+                "z": 5,
             },
             "centre_light_14_new_fred": {
                 "name": "game_centre_14_new_fred",
@@ -206,6 +218,13 @@ ROOMS = {
                 "y": "top",
                 "z": 4,
                 "padding": {"x": 20, "y": 0}
+            },
+            "check_old_bon": {
+                "name": "check_old_bon",
+                "x": "right",
+                "y": "bottom",
+                "z": 2,
+                "padding": {"x": 85, "y": 0}
             },
             "screamer_new_bon": {
                 "name": "screamer_new_bon",
@@ -310,6 +329,12 @@ ROOMS = {
                 "y": 21,
                 "z": 3,
             },
+            "centre_light_13_old_foxy": {
+                "name": "game_centre_13_foxy",
+                "x": 106,
+                "y": 37,
+                "z": 4,
+            },
             "centre_light_13_new_bird": {
                 "name": "game_centre_13_new_bird",
                 "x": 110,
@@ -327,6 +352,12 @@ ROOMS = {
                 "x": 125,
                 "y": 35,
                 "z": 4,
+            },
+            "centre_light_14_old_bon": {
+                "name": "game_centre_14_old_bon",
+                "x": 125,
+                "y": 35,
+                "z": 5,
             },
             "centre_light_14_new_fred": {
                 "name": "game_centre_14_new_fred",
@@ -409,6 +440,13 @@ ROOMS = {
                 "y": "bottom",
                 "z": 7,
                 "padding": {"x": 110, "y": 0}
+            },
+            "check_old_bon": {
+                "name": "check_old_bon",
+                "x": "right",
+                "y": "bottom",
+                "z": 2,
+                "padding": {"x": 137, "y": 0}
             },
             "screamer_new_bon": {
                 "name": "screamer_new_bon",
@@ -553,6 +591,12 @@ ROOMS = {
                 "z": 3,
                 "padding": {"x": -35, "y": 0}
             },
+            "cam_1_old_bon_l": {
+                "name": "cam_1_old_bon_l",
+                "x": "left",
+                "y": "bottom",
+                "z": 3,
+            },
             "cam_1_new_bird_l": {
                 "name": "cam_1_new_bird_l",
                 "x": "left",
@@ -669,6 +713,12 @@ ROOMS = {
                 "y": 17,
                 "z": 3,
             },
+            "cam_5_old_bon_l": {
+                "name": "cam_5_old_bon_l",
+                "x": 75,
+                "y": 0,
+                "z": 3,
+            },
             "cam_6": {
                 "name": "cam_6",
                 "x": "left",
@@ -719,6 +769,13 @@ ROOMS = {
                 "z": 3,
                 "padding": {"x": -35, "y": 0}
             },
+            "cam_7_old_bon_l": {
+                "name": "cam_7_old_bon_l",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+                "padding": {"x": 100, "y": 27}
+            },
             "cam_7_old_fred_l": {
                 "name": "cam_7_old_fred_l",
                 "x": "right",
@@ -751,6 +808,25 @@ ROOMS = {
                 "x": "left",
                 "y": "top",
                 "z": 3,
+            },
+            "cam_8_old_bon_l": {
+                "name": "cam_8_old_bon_l",
+                "x": 80,
+                "y": "top",
+                "z": 4,
+            },
+            "cam_8_old_bird_l": {
+                "name": "cam_8_old_bird_l",
+                "x": 0,
+                "y": 23,
+                "z": 4,
+            },
+            "cam_8_old_foxy_l": {
+                "name": "cam_8_old_foxy_l",
+                "x": 120,
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 0, "y": 3}
             },
             "cam_9": {
                 "name": "cam_9",

@@ -50,6 +50,10 @@ SPRITES = {
         "type": "static",
         "path": "game/office/centre_light_big_r.txt",
     },
+    "game_centre_13_foxy": {
+        "type": "static",
+        "path": "game/office/centre/13_foxy.txt",
+    },
     "game_centre_13_new_bird": {
         "type": "static",
         "path": "game/office/centre/13_new_bird.txt",
@@ -61,6 +65,10 @@ SPRITES = {
     "game_centre_13_mangle": {
         "type": "static",
         "path": "game/office/centre/13_mangle.txt",
+    },
+    "game_centre_14_old_bon": {
+        "type": "static",
+        "path": "game/office/centre/14_old_bon.txt",
     },
     "game_centre_14_new_fred": {
         "type": "static",
@@ -105,6 +113,10 @@ SPRITES = {
     "cam_1_l": {
         "type": "static",
         "path": "game/cameras/1/def_l.txt",
+    },
+    "cam_1_old_bon_l": {
+        "type": "static",
+        "path": "game/cameras/1/old_bon_l.txt",
     },
     "cam_1_new_bird_l": {
         "type": "static",
@@ -178,6 +190,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/5/new_bird_l.txt",
     },
+    "cam_5_old_bon_l": {
+        "type": "static",
+        "path": "game/cameras/5/old_bon_l.txt",
+    },
     "cam_6": {
         "type": "static",
         "path": "game/cameras/6/def.txt",
@@ -210,6 +226,10 @@ SPRITES = {
         "type": "static",
         "path": "game/cameras/7/old_fred_l.txt",
     },
+    "cam_7_old_bon_l": {
+        "type": "static",
+        "path": "game/cameras/7/old_bon_l.txt",
+    },
     "cam_7_new_bird": {
         "type": "static",
         "path": "game/cameras/7/new_bird.txt",
@@ -225,6 +245,18 @@ SPRITES = {
     "cam_8_l": {
         "type": "static",
         "path": "game/cameras/8/def_l.txt",
+    },
+    "cam_8_old_bon_l": {
+        "type": "static",
+        "path": "game/cameras/8/old_bon_l.txt",
+    },
+    "cam_8_old_bird_l": {
+        "type": "static",
+        "path": "game/cameras/8/old_bird_l.txt",
+    },
+    "cam_8_old_foxy_l": {
+        "type": "static",
+        "path": "game/cameras/8/old_foxy_l.txt",
     },
     "cam_9": {
         "type": "static",
@@ -458,6 +490,14 @@ SPRITES = {
         "type": "animation",
         "frames": [
             "game/check/mangle.txt",
+        ],
+        "update_in": 1,
+        "mode": "hold"
+    },
+    "check_old_bon": {
+        "type": "animation",
+        "frames": [
+            "game/check/old_bon.txt",
         ],
         "update_in": 1,
         "mode": "hold"
