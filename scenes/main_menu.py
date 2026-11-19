@@ -3,14 +3,14 @@ from engine.scene import Scene
 from utils.log import debug_log
 from utils.save import load_config
 from pynput import keyboard
-from scenes.helpers import new_game
+from scenes.helpers import new_game, check_night_start_events
 
 class MainMenu(Scene):
     def __init__(self, app, save_state, params):
         super().__init__(app)
         self.save_state = save_state
         self.options_action = [
-            lambda: self.app.set_scene("game", {"night_num": self.save_state.data["curr_night"]}),
+            lambda: check_night_start_events(self.app, self.save_state.data["curr_night"], self.save_state),
             lambda: new_game(self.app, self.save_state.update),
             lambda: self.app.set_scene("settings"),
             lambda: sys.exit()

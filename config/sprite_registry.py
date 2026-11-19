@@ -386,6 +386,18 @@ SPRITES = {
     # --------------------- #
     #      ANIMATIONS       #
     # --------------------- #
+    "newspaper_in": {
+        "type": "animation",
+        "frames": [
+            "game/cameras/not_found/1.txt",
+            "game/cameras/not_found/2.txt",
+            "game/cameras/not_found/3.txt",
+            "game/cameras/not_found/4.txt",
+            "game/cameras/not_found/5.txt",
+        ],
+        "update_in": 0.5,
+        "mode": "loop",
+    },
     "office_fan_anima": {
         "type": "animation",
         "frames": [

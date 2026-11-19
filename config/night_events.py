@@ -1,6 +1,6 @@
 NIGHT_EVENTS = {
     1: {
-        "start": "scene_name" # газета з роботою
+        "start": "newspaper" # газета з роботою
     },
     2: {
         "start": "scene_name" # анімація + чіка боні

@@ -67,6 +67,19 @@ ROOMS = {
             },
         }
     },
+    "newspaper": {
+        "bg": {
+            "name": "game_office_l",
+        },
+        "sprites": {
+            "newspaper_in": {
+                "name": "newspaper_in",
+                "x": "left",
+                "y": "top",
+                "z": 2
+            },
+        }
+    },
     "game_office_l": {
         "bg": {
             "name": "game_office_l",
