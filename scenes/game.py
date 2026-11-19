@@ -29,8 +29,9 @@ class GameScene(Scene):
         self._last_tick = time.time()
         self.paused = False
         self.light_pushed = False
-        fan_nmae = "office_fan_anima"
-        self.curr_frame_data = {
+        self.is_preview_ended = False
+        self.preview_time = 0
+        self.start_frames = {
             "room": "game_office_l",
             "sprites": {
                 "game_buttery": {
@@ -53,7 +54,7 @@ class GameScene(Scene):
                 },
                 "office_fan_anima": {
                     "type": "animation",
-                    "update_in": SPRITES[fan_nmae]["update_in"],
+                    "update_in": SPRITES["office_fan_anima"]["update_in"],
                     "frames_num": 4,
                     "mode": "loop",
                     "data": {
@@ -63,8 +64,33 @@ class GameScene(Scene):
                 },
             }
         }
+        self.curr_frame_data = {
+            "room": "game_start_night",
+            "sprites": {
+                "time": {
+                    "type": "generated",
+                    "data": {
+                        "text": "12:00 AM"
+                    }
+                },
+                "night": {
+                    "type": "generated",
+                    "data": {
+                        "text": f"{params["night_num"]}st Night"
+                    }
+                },
+            }
+        }
 
     def extra_update(self):
+        if not self.is_preview_ended:
+            self.preview_time = self.preview_time + 1
+            if self.preview_time >= 100:
+                self.is_preview_ended = True
+                self.curr_frame_data = self.start_frames
+
+            return
+        
         now = time.time()
 
         if self.paused: return
@@ -95,6 +121,8 @@ class GameScene(Scene):
                 self.curr_frame_data["sprites"][key] = sprite
 
     def handle_input(self, input):
+        if not self.is_preview_ended: return
+
         if self.game.state.state == "end" and not self.game.state.time.is_end_night():
             if (input.was_pressed(keyboard.Key.enter)
                 or input.was_pressed(keyboard.KeyCode.from_char('\n'))

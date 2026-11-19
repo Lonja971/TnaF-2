@@ -1122,5 +1122,26 @@ ROOMS = {
                 "z": 6,
             },
         }
+    },
+    "game_start_night": {
+        "bg": {
+            "name": "None"
+        },
+        "sprites": {
+            "time": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 142, "y": 46}
+            },
+            "night": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "top",
+                "z": 4,
+                "padding": {"x": 140, "y": 47}
+            },
+        }
     }
 }
