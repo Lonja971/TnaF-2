@@ -69,6 +69,9 @@ class GameScene(Scene):
 
         if self.paused: return
 
+        if self.game.state.is_6am_anim_finished:
+            self.app.set_scene("menu")
+
         if now - self._last_tick >= self.tick_rate:
             dt = now - self._last_tick
             self._last_tick = now
@@ -92,7 +95,7 @@ class GameScene(Scene):
                 self.curr_frame_data["sprites"][key] = sprite
 
     def handle_input(self, input):
-        if self.game.state.state == "end":
+        if self.game.state.state == "end" and not self.game.state.time.is_end_night():
             if (input.was_pressed(keyboard.Key.enter)
                 or input.was_pressed(keyboard.KeyCode.from_char('\n'))
                 or input.was_pressed(keyboard.KeyCode.from_char('z'))

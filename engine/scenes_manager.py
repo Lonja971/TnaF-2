@@ -41,5 +41,5 @@ class ScenesManager:
                 self.current_scene.render(self.win)
                 self.win.refresh()
 
-            time.sleep(0.001)
+            time.sleep(0.0005)
             curses.napms(16)

@@ -44,6 +44,7 @@ class GameState:
         self.is_tablet_opening_anim = False
         self.tablet_anim_dir = "open"
         self.active_camera_num = 9
+        self.is_6am_anim_finished = False
         self.is_mask = False
         self.is_removing_mask = False
         self.light = None
@@ -159,8 +160,9 @@ class GameState:
         config = load_config("save.json")
         if config["record_night"] < self.night_num:
             config["record_night"] = self.night_num
-        config["curr_night"] = self.night_num + 1
-        debug_log(config)
+        if self.night_num + 1 <= 6:
+            config["curr_night"] = self.night_num + 1
+            
         save_config("save.json", config)
 
         self.is_night_progress_saved = True

@@ -697,8 +697,11 @@ class GameSceneFrames:
                 if self.last_scene != "6am":
                     frames_data["rewrite"] = True
                     frames_data["update"] = self.am6_frames()
+                    self.last_scene = "6am"
 
-                self.last_scene = "6am"
+                if anim_state.get("6am_anima", {}).get("curr_frame", 0) >= 42:
+                    self.state.is_6am_anim_finished = True
+
             else:
                 if self.last_scene != "game_over":
                     frames_data["rewrite"] = True

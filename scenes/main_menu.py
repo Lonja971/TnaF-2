@@ -1,6 +1,7 @@
 import curses, time, random, sys
 from engine.scene import Scene
 from utils.log import debug_log
+from utils.save import load_config
 from pynput import keyboard
 from scenes.helpers import new_game
 
@@ -62,6 +63,10 @@ class MainMenu(Scene):
 
         super().on_enter()
 
+    def on_enter(self):
+        self.save_state.update()
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"] = [f"Night {self.save_state.data["curr_night"]}", "New game", "Settings", "Quit"]
+
     def handle_input(self, input):
         menu_element = self.curr_frame_data["sprites"]["main_menu_options"]
         data = menu_element["data"]
@@ -107,3 +112,4 @@ class MainMenu(Scene):
                     sprites.pop(old)
                     sprites[toy] = {"type": "static"}
                     el["timer"] = now + random.uniform(el["toy_interval"][0], el["toy_interval"][1])
+

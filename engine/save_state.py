@@ -6,3 +6,4 @@ class SaveState:
 
     def update(self):
         self.data = load_config("save.json")
+        return self.data
