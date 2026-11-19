@@ -72,6 +72,13 @@ ROOMS = {
             "name": "game_office_l",
         },
         "sprites": {
+            "text": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "top",
+                "z": 4,
+                "padding": {"x": 45, "y": 30}
+            },
             "newspaper": {
                 "name": "newspaper",
                 "x": "left",
@@ -82,7 +89,7 @@ ROOMS = {
                 "name": "newspaper_uit",
                 "x": "left",
                 "y": "top",
-                "z": 4
+                "z": 5
             },
         }
     },

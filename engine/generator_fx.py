@@ -49,6 +49,22 @@ def generate_main_menu_options(element_data):
 
     return frame
 
+def generate_ascii_text(element_data):
+    text = element_data["data"]["text"].replace("/n", "\n")
+    frame = []
+
+    for line in text.split("\n"):
+        rows = ["" for _ in range(ASCII_ALPHABET_HEIGHT)]
+
+        for ch in line.lower():
+            block = ASCII_ALPHABET.get(ch, [ch] + [" "] * (ASCII_ALPHABET_HEIGHT - 1))
+            for row in range(ASCII_ALPHABET_HEIGHT):
+                rows[row] += block[row]
+
+        frame.extend(rows)
+
+    return frame
+
 def generate_camera_music_box_power(elenent_data):
     SPRITE_HEIGHT = 4
     POWER_DEELS = 10

@@ -6,7 +6,8 @@ from engine.generator_fx import (
     game_timeblock,
     game_nightnumber,
     generate_camera_map,
-    generate_camera_music_box_power
+    generate_camera_music_box_power,
+    generate_ascii_text
 )
 
 GENERATORS = {
@@ -17,5 +18,6 @@ GENERATORS = {
     "game_timeblock": game_timeblock,
     "game_nightnumber": game_nightnumber,
     "camera_map": generate_camera_map,
-    "music_box_power": generate_camera_music_box_power
+    "music_box_power": generate_camera_music_box_power,
+    "ascii_text": generate_ascii_text
 }

@@ -23,7 +23,13 @@ class Newspaper(Scene):
             "room": "newspaper",
             "sprites": {
                 "newspaper": {
-                    "type": "generated"
+                    "type": "static"
+                },
+                "text": {
+                    "type": "generated",
+                    "data": {
+                        "text": "Grand Re-opening !!!/n /nVintage pizzeria/ngiven new life !/n /nCome be a part of the/nnew face of freddy/nfazbears's pizza !/n /nwhat could go wrong ?/n /n$100.50 a week !/nTo apply call:/n1-555-faz-fazbear"
+                    }
                 }
             }
         }

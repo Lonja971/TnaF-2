@@ -895,4 +895,7 @@ SPRITES = {
     "music_box_power": {
         "type": "generated"
     },
+    "ascii_text": {
+        "type": "generated"
+    },
 }
