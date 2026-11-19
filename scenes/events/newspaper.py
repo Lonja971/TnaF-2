@@ -9,19 +9,22 @@ class Newspaper(Scene):
         self.event_name = "1_start"
         self.night_num = params["night_num"]
         self.timer = 0
+        self.animation_sprite = {
+            "type": "animation",
+            "update_in": 0.05,
+            "frames_num": 12,
+            "mode": "hold",
+            "data": {
+                "curr_frame": 0,
+                "last_update": time.time()
+            }
+        }
         self.curr_frame_data = {
             "room": "newspaper",
             "sprites": {
-                "newspaper_in": {
-                    "type": "animation",
-                    "update_in": 0.5,
-                    "frames_num": 4,
-                    "mode": "hold",
-                    "data": {
-                        "curr_frame": 0,
-                        "last_update": time.time()
-                    }
-                },
+                "newspaper": {
+                    "type": "generated"
+                }
             }
         }
 
@@ -35,7 +38,9 @@ class Newspaper(Scene):
 
     def extra_update(self):
         self.timer = self.timer + 1
-        if self.timer >= 50:
+        if self.timer >= 300 and "newspaper_uit" not in self.curr_frame_data["sprites"]:
+            self.curr_frame_data["sprites"]["newspaper_uit"] = self.animation_sprite
+        if self.timer >= 325:
             all_completed_events = self.save_state.data["completed_events"]
             all_completed_events.append(self.event_name)
             update_config_value("save.json", "completed_events", all_completed_events)

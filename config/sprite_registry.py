@@ -30,6 +30,10 @@ SPRITES = {
         "type": "static",
         "path": "menu/name3.txt",
     },
+    "newspaper": {
+        "type": "static",
+        "path": "events/newspaper/0.txt",
+    },
     "game_office_l": {
         "type": "static",
         "path": "game/office/l.txt",
@@ -386,16 +390,26 @@ SPRITES = {
     # --------------------- #
     #      ANIMATIONS       #
     # --------------------- #
-    "newspaper_in": {
+    "newspaper_uit": {
         "type": "animation",
         "frames": [
-            "game/cameras/not_found/1.txt",
-            "game/cameras/not_found/2.txt",
-            "game/cameras/not_found/3.txt",
-            "game/cameras/not_found/4.txt",
-            "game/cameras/not_found/5.txt",
+            "events/newspaper/0.txt",
+            "events/newspaper/10.txt",
+            "events/newspaper/20.txt",
+            "events/newspaper/30.txt",
+            "events/newspaper/40.txt",
+            "events/newspaper/50.txt",
+            "events/newspaper/60.txt",
+            "events/newspaper/70.txt",
+            "events/newspaper/80.txt",
+            "events/newspaper/90.txt",
+            "events/newspaper/95.txt",
+            "events/newspaper/100.txt",
+            "events/newspaper/100.txt",
+            "events/newspaper/100.txt",
+            "events/newspaper/100.txt",
         ],
-        "update_in": 0.5,
+        "update_in": 0.1,
         "mode": "loop",
     },
     "office_fan_anima": {
