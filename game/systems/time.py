@@ -1,5 +1,5 @@
 class TimeSystem:
-    MS_TICK = 100
+    MS_TICK = 150
     
     def __init__(self):
         self.hour = 12

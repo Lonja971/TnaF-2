@@ -4,6 +4,13 @@ ROOMS = {
             "name": "background_dots"
         },
         "sprites": {
+            "stars": {
+                "name": "stars",
+                "x": "left",
+                "y": "top",
+                "z": 6,
+                "padding": {"x":6, "y":30}
+            },
             "main_menu_options": {
                 "name": "main_menu_options",
                 "x": "left",

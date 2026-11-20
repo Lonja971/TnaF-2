@@ -25,6 +25,34 @@ def generate_black_background(element_data):
 
     return content
 
+
+def generate_stars(element_data):
+    debug_log(element_data)
+    number = element_data["data"]["count"]
+
+    star = """
+№№№№№№№№№#%№№№№№№№№№
+№№№№№№№№№%%№№№№№№№№№
+№№№№№№№№%@@%№№№№№№№№
+*#######@@@@#######*
+№#%@@@@@@@@@@@@@@%*№
+№№№#%@@@@@@@@@%#№№№№
+№№№№№#%@@@@@@%#№№№№№
+№№№№№%@@@%%@@@%№№№№№
+№№№№№#@%#№№№#%@#№№№№
+№№№№##№№№№№№№№№##№№№
+"""
+
+    star_lines = star.strip("\n").splitlines()
+    frame = [""] * len(star_lines)
+
+    for time in range(number):
+        for i in range(len(frame)):
+            frame[i] += star_lines[i] + "№№"
+
+    return frame
+
+
 def generate_main_menu_options(element_data):
     selected = element_data["data"].get("selected", 0)
     options = element_data["data"].get("options", [])

@@ -9,6 +9,8 @@ class MainMenu(Scene):
     def __init__(self, app, save_state, params):
         super().__init__(app)
         self.save_state = save_state
+        self.stars_count = 0
+        self.check_stars_count()
         self.options_action = [
             lambda: check_night_start_events(self.app, self.save_state.data["curr_night"], self.save_state),
             lambda: new_game(self.app, self.save_state.update),
@@ -48,6 +50,12 @@ class MainMenu(Scene):
                 },
                 "menu_logo_text": {
                     "type": "static"
+                },
+                "stars": {
+                    "type": "generated",
+                    "data": {
+                        "count": self.stars_count
+                    }
                 },
                 "menu_anim_toy_freddy": {
                     "type": "static"
@@ -90,6 +98,15 @@ class MainMenu(Scene):
             action()
 
         data["selected"] = selected_option
+
+    def check_stars_count(self):
+        comp_nights =  self.save_state.data["completed_nights"]
+        if 5 in comp_nights:
+            self.stars_count = self.stars_count + 1
+        if 6 in comp_nights:
+            self.stars_count = self.stars_count + 1
+        if 7 in comp_nights:
+            self.stars_count = self.stars_count + 1
 
     def extra_update(self):
         now = time.time()

@@ -1,5 +1,6 @@
 {
     "curr_night": 1,
     "record_night": 1,
-    "completed_events": []
+    "completed_events": [],
+    "completed_nights": []
 }

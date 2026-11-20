@@ -1031,4 +1031,7 @@ SPRITES = {
     "ascii_text": {
         "type": "generated"
     },
+    "stars": {
+        "type": "generated"
+    },
 }

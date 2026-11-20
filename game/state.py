@@ -162,6 +162,18 @@ class GameState:
             config["record_night"] = self.night_num
         if self.night_num + 1 <= 6:
             config["curr_night"] = self.night_num + 1
+        if self.night_num not in config["completed_nights"]:
+            if self.night_num == 7:
+                is_everyone_20 = True
+                for anima in self.animatronics.values():
+                    if anima.intelligence < 20:
+                        is_everyone_20 = False
+                        break
+                if is_everyone_20:
+                    config["completed_nights"].append(self.night_num)
+
+            else:
+                config["completed_nights"].append(self.night_num)
             
         save_config("save.json", config)
 
