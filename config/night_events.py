@@ -3,13 +3,16 @@ NIGHT_EVENTS = {
         "start": "newspaper" # газета з роботою
     },
     2: {
-        "start": "scene_name" # анімація + чіка боні
+        "end": "nightmare" # анімація + чіка боні дивляться
+    },
+    3: {
+        "end": "nightmare" # анімація + чіка боні голден
     },
     4: {
-        "start": "scene_name" # анімація + чіка боні голден
+        "end": "nightmare" # анімація + чіка боні маріонетка
     },
     5: {
-        "start": "scene_name", # анімація + чіка боні маріонетка
+        "start": "nightmare",
         "end":  "scene_name" # лист робота скінчена
     },
     6: {

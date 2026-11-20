@@ -1,6 +1,7 @@
 import curses
 from scenes.main_menu import MainMenu
 from scenes.events.newspaper import Newspaper
+from scenes.events.nightmare import Nightmare
 from scenes.game import GameScene
 from scenes.settings import SettingsScene
 from utils.log import debug_log
@@ -16,7 +17,8 @@ class ScenesManager:
             "menu": MainMenu,
             "game": GameScene,
             "settings": SettingsScene,
-            "newspaper": Newspaper
+            "newspaper": Newspaper,
+            "nightmare": Nightmare
         }
         self.current_scene = None
 

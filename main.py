@@ -20,7 +20,11 @@ def main(stdscr):
 
     scenes_manager = ScenesManager(main_win)
 
-    scenes_manager.set_scene("menu")
+    if "first_nightmare" not in scenes_manager.save_state.data["completed_events"]:
+        scenes_manager.set_scene("nightmare", {"night_num": 0})
+    else:
+        scenes_manager.set_scene("menu")
+
     scenes_manager.run()
 
 def check_ter_size(stdscr, config):

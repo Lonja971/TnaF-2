@@ -3,6 +3,7 @@ from utils.log import debug_log
 from game.game import Game
 import time
 from pynput import keyboard
+from scenes.helpers import check_night_end_events
 from config.sprite_registry import SPRITES
 
 CAMERA_KEYBINDS = {
@@ -25,6 +26,7 @@ class GameScene(Scene):
         super().__init__(app)
         debug_log(params)
         self.game = Game(params["night_num"])
+        self.save_state = save_state
         self.tick_rate = 0.10
         self._last_tick = time.time()
         self.paused = False
@@ -96,7 +98,7 @@ class GameScene(Scene):
         if self.paused: return
 
         if self.game.state.is_6am_anim_finished:
-            self.app.set_scene("menu")
+            check_night_end_events(self.app, self.game.night, self.save_state)
 
         if now - self._last_tick >= self.tick_rate:
             dt = now - self._last_tick

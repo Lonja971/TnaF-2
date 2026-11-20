@@ -1125,7 +1125,7 @@ ROOMS = {
     },
     "game_start_night": {
         "bg": {
-            "name": "None"
+            "name": "background_black"
         },
         "sprites": {
             "time": {
@@ -1143,5 +1143,280 @@ ROOMS = {
                 "padding": {"x": 140, "y": 47}
             },
         }
-    }
+    },
+    "nightmare": {
+        "bg": {
+            "name": "None",
+        },
+        "sprites": {
+            "nightmare_mask": {
+                "name": "nightmare_mask",
+                "x": "right",
+                "y": "top",
+                "z": 6
+            },
+            "nightmare_poppet": {
+                "name": "nightmare_poppet",
+                "x": "right",
+                "y": "top",
+                "z": 3,
+                "padding": {"x": 0, "y": 0}
+            },
+            "nightmare_golden_6": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -90, "y": 0}
+            },
+            "nightmare_golden_7": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -50, "y": 0}
+            },
+            "nightmare_golden_8": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -10, "y": 0}
+            },
+            "nightmare_golden_9": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 30, "y": 0}
+            },
+            "nightmare_golden_10": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 70, "y": 0}
+            },
+            "nightmare_golden_11": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 110, "y": 0}
+            },
+            "nightmare_golden_12": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 150, "y": 0}
+            },
+            "nightmare_golden_13": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 190, "y": 0}
+            },
+            "nightmare_golden_14": {
+                "name": "nightmare_golden",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": 230, "y": 0}
+            },
+            "nightmare_bon_3_13": {
+                "name": "nightmare_bon_3",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bon_3_14": {
+                "name": "nightmare_bon_3",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bon_3_15": {
+                "name": "nightmare_bon_3",
+                "x": "right",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_bird_3_7": {
+                "name": "nightmare_bird_3",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bird_3_6": {
+                "name": "nightmare_bird_3",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bird_3_5": {
+                "name": "nightmare_bird_3",
+                "x": "left",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_bon_2_13": {
+                "name": "nightmare_bon_2",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bon_2_14": {
+                "name": "nightmare_bon_2",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bon_2_15": {
+                "name": "nightmare_bon_2",
+                "x": "right",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_bird_2_7": {
+                "name": "nightmare_bird_2",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bird_2_6": {
+                "name": "nightmare_bird_2",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bird_2_5": {
+                "name": "nightmare_bird_2",
+                "x": "left",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_bon_0_13": {
+                "name": "nightmare_bon_1",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bon_0_14": {
+                "name": "nightmare_bon_1",
+                "x": "right",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bon_0_15": {
+                "name": "nightmare_bon_1",
+                "x": "right",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_bird_0_7": {
+                "name": "nightmare_bird_1",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -80, "y": 0}
+            },
+            "nightmare_bird_0_6": {
+                "name": "nightmare_bird_1",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x": -40, "y": 0}
+            },
+            "nightmare_bird_0_5": {
+                "name": "nightmare_bird_1",
+                "x": "left",
+                "y": "top",
+                "z": 2
+            },
+            "nightmare_location_5": {
+                "name": "nightmare_location_5",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_6": {
+                "name": "nightmare_location_6",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_7": {
+                "name": "nightmare_location_7",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_8": {
+                "name": "nightmare_location_8",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_9": {
+                "name": "nightmare_location_9",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_10": {
+                "name": "nightmare_location_10",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_11": {
+                "name": "nightmare_location_11",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_12": {
+                "name": "nightmare_location_12",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_13": {
+                "name": "nightmare_location_13",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_14": {
+                "name": "nightmare_location_14",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "nightmare_location_15": {
+                "name": "nightmare_location_15",
+                "x": "right",
+                "y": "top",
+                "z": 1
+            },
+            "background_black": {
+                "name": "background_black",
+                "x": "right",
+                "y": "top",
+                "z": 10
+            }
+        }
+    },
 }

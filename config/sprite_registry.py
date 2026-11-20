@@ -386,6 +386,86 @@ SPRITES = {
         "type": "static",
         "path": "game/game_over/text.txt"
     },
+    "nightmare_location_5": {
+        "type": "static",
+        "path": "events/nightmare/location/5.txt"
+    },
+    "nightmare_location_6": {
+        "type": "static",
+        "path": "events/nightmare/location/6.txt"
+    },
+    "nightmare_location_7": {
+        "type": "static",
+        "path": "events/nightmare/location/7.txt"
+    },
+    "nightmare_location_8": {
+        "type": "static",
+        "path": "events/nightmare/location/8.txt"
+    },
+    "nightmare_location_9": {
+        "type": "static",
+        "path": "events/nightmare/location/9.txt"
+    },
+    "nightmare_location_10": {
+        "type": "static",
+        "path": "events/nightmare/location/10.txt"
+    },
+    "nightmare_location_11": {
+        "type": "static",
+        "path": "events/nightmare/location/11.txt"
+    },
+    "nightmare_location_12": {
+        "type": "static",
+        "path": "events/nightmare/location/12.txt"
+    },
+    "nightmare_location_13": {
+        "type": "static",
+        "path": "events/nightmare/location/13.txt"
+    },
+    "nightmare_location_14": {
+        "type": "static",
+        "path": "events/nightmare/location/14.txt"
+    },
+    "nightmare_location_15": {
+        "type": "static",
+        "path": "events/nightmare/location/15.txt"
+    },
+    "nightmare_mask": {
+        "type": "static",
+        "path": "events/nightmare/mask.txt"
+    },
+    "nightmare_bon_1": {
+        "type": "static",
+        "path": "events/nightmare/bon_1.txt"
+    },
+    "nightmare_bird_1": {
+        "type": "static",
+        "path": "events/nightmare/bird_1.txt"
+    },
+    "nightmare_bon_2": {
+        "type": "static",
+        "path": "events/nightmare/bon_2.txt"
+    },
+    "nightmare_bird_2": {
+        "type": "static",
+        "path": "events/nightmare/bird_2.txt"
+    },
+    "nightmare_bon_3": {
+        "type": "static",
+        "path": "events/nightmare/bon_3.txt"
+    },
+    "nightmare_bird_3": {
+        "type": "static",
+        "path": "events/nightmare/bird_3.txt"
+    },
+    "nightmare_golden": {
+        "type": "static",
+        "path": "events/nightmare/gold.txt"
+    },
+    "nightmare_poppet": {
+        "type": "static",
+        "path": "events/nightmare/poppet.txt"
+    },
 
     # --------------------- #
     #      ANIMATIONS       #
@@ -875,6 +955,9 @@ SPRITES = {
         "type": "generated"
     },
     "background_dots": {
+        "type": "generated"
+    },
+    "background_black": {
         "type": "generated"
     },
     "main_menu_options": {
