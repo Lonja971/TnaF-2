@@ -2,6 +2,8 @@ import curses
 from scenes.main_menu import MainMenu
 from scenes.events.newspaper import Newspaper
 from scenes.events.nightmare import Nightmare
+from scenes.events.pay5 import PayCheck5
+from scenes.events.pay6 import PayCheck6
 from scenes.game import GameScene
 from scenes.settings import SettingsScene
 from utils.log import debug_log
@@ -18,7 +20,9 @@ class ScenesManager:
             "game": GameScene,
             "settings": SettingsScene,
             "newspaper": Newspaper,
-            "nightmare": Nightmare
+            "nightmare": Nightmare,
+            "pay5": PayCheck5,
+            "pay6": PayCheck6
         }
         self.current_scene = None
 

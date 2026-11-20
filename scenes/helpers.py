@@ -6,7 +6,7 @@ def new_game(app, update_save):
     update_config_value("save.json", "curr_night", NEW_NIGHT)
     update_config_value("save.json", "completed_events", [])
     update_save()
-    app.set_scene(NIGHT_EVENTS[NEW_NIGHT]["start"], {"night_num": NEW_NIGHT})
+    app.set_scene("nightmare", {"night_num": 0})
 
 def check_night_start_events(app, night_number, save_state):
     if (night_number not in NIGHT_EVENTS) or ("start" not in NIGHT_EVENTS[night_number]):

@@ -69,7 +69,7 @@ ROOMS = {
     },
     "newspaper": {
         "bg": {
-            "name": "game_office_l",
+            "name": "background_black",
         },
         "sprites": {
             "text": {
@@ -91,6 +91,72 @@ ROOMS = {
                 "y": "top",
                 "z": 5
             },
+        }
+    },
+    "paycheck5": {
+        "bg": {
+            "name": "background_black",
+        },
+        "sprites": {
+            "text": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 85, "y": 7}
+            },
+            "theend": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 4, "y": 2}
+            },
+            "paycheck5": {
+                "name": "paycheck5",
+                "x": "left",
+                "y": "top",
+                "z": 3
+            },
+            "paycheck5_uit": {
+                "name": "paycheck5_uit",
+                "x": "left",
+                "y": "top",
+                "z": 5
+            },
+        }
+    },
+    "paycheck6": {
+        "bg": {
+            "name": "background_black",
+        },
+        "sprites": {
+            "text": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "top",
+                "z": 4,
+                "padding": {"x": 59, "y": 15}
+            },
+            "paycheck6": {
+                "name": "paycheck6",
+                "x": "left",
+                "y": "top",
+                "z": 3
+            },
+            "paycheck6_uit": {
+                "name": "paycheck6_uit",
+                "x": "left",
+                "y": "top",
+                "z": 5
+            },
+            "theend": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 4, "y": 2}
+            }
         }
     },
     "game_office_l": {

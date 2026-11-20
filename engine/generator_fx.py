@@ -153,8 +153,11 @@ def game_timeblock(data):
     SPRITE_HEIGHT = 4
 
     time = data["data"]["time"]
-    hour = str(time[0])
-    minutes = str(time[1]) if len(str(time[1])) == 2 else ("0" + str(time[1]))
+    text = "am"
+    if time[0] == 6:
+        hour = "5"
+    else:
+        hour = str(time[0])
 
     frame = ["", "", "", ""]
 
@@ -168,12 +171,11 @@ def game_timeblock(data):
             frame[i] += block[i]
 
 
-    middle = ASCII_ALPHABET[":"]
+    middle = ASCII_ALPHABET[" "]
     for i in range(SPRITE_HEIGHT):
         frame[i] += middle[i]
 
-
-    for ch in minutes.lower():
+    for ch in text:
         if ch in ASCII_ALPHABET:
             block = ASCII_ALPHABET[ch]
         else:

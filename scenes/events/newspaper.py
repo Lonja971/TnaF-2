@@ -11,7 +11,7 @@ class Newspaper(Scene):
         self.timer = 0
         self.animation_sprite = {
             "type": "animation",
-            "update_in": 0.03,
+            "update_in": 0.02,
             "frames_num": 12,
             "mode": "hold",
             "data": {
