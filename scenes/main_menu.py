@@ -13,9 +13,6 @@ class MainMenu(Scene):
         self.check_stars_count()
         self.options_action = [
             lambda: check_night_start_events(self.app, self.save_state.data["curr_night"], self.save_state),
-            lambda: new_game(self.app, self.save_state.update),
-            lambda: self.app.set_scene("settings"),
-            lambda: sys.exit()
         ]
         self.bg_anim_data = {
             "chica": {
@@ -45,7 +42,7 @@ class MainMenu(Scene):
                     "type": "generated",
                     "data": {
                         "selected": 0,
-                        "options": [f"Night {self.save_state.data["curr_night"]}", "New game", "Settings", "Quit"]
+                        "options": [f"Night {self.save_state.data["curr_night"]}"]
                     }
                 },
                 "menu_logo_text": {
@@ -55,6 +52,12 @@ class MainMenu(Scene):
                     "type": "generated",
                     "data": {
                         "count": self.stars_count
+                    }
+                },
+                "developer": {
+                    "type": "generated",
+                    "data": {
+                        "text": "Mr.Stinger__"
                     }
                 },
                 "menu_anim_toy_freddy": {
@@ -69,11 +72,18 @@ class MainMenu(Scene):
             }
         }
 
+        self.add_extra_options()
+
         super().on_enter()
 
     def on_enter(self):
         self.save_state.update()
-        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"] = [f"Night {self.save_state.data["curr_night"]}", "New game", "Settings", "Quit"]
+        self.options_action = [
+            lambda: check_night_start_events(self.app, self.save_state.data["curr_night"], self.save_state),
+        ]
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"] = [f"Night {self.save_state.data["curr_night"]}"]
+
+        self.add_extra_options()
 
     def handle_input(self, input):
         menu_element = self.curr_frame_data["sprites"]["main_menu_options"]
@@ -129,4 +139,20 @@ class MainMenu(Scene):
                     sprites.pop(old)
                     sprites[toy] = {"type": "static"}
                     el["timer"] = now + random.uniform(el["toy_interval"][0], el["toy_interval"][1])
+
+    def add_extra_options(self):
+        if 5 in self.save_state.data["completed_nights"]:
+            self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Night 6")
+            self.options_action.append(lambda: self.app.set_scene("game", {"night_num": 6}))
+        if 6 in self.save_state.data["completed_nights"]:
+            self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Custom  night")
+            self.options_action.append(lambda: self.app.set_scene("custom_options"))
+            
+
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("New  game")
+        self.options_action.append(lambda: new_game(self.app, self.save_state.update))
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Settings")
+        self.options_action.append(lambda: self.app.set_scene("settings"))
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Quit")
+        self.options_action.append(lambda: sys.exit())
 

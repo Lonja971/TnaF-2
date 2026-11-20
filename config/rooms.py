@@ -11,6 +11,13 @@ ROOMS = {
                 "z": 6,
                 "padding": {"x":6, "y":30}
             },
+            "developer": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 6,
+                "padding": {"x":4, "y":2}
+            },
             "main_menu_options": {
                 "name": "main_menu_options",
                 "x": "left",

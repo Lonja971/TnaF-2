@@ -160,7 +160,7 @@ class GameState:
         config = load_config("save.json")
         if config["record_night"] < self.night_num:
             config["record_night"] = self.night_num
-        if self.night_num + 1 <= 6:
+        if self.night_num + 1 <= 5:
             config["curr_night"] = self.night_num + 1
         if self.night_num not in config["completed_nights"]:
             if self.night_num == 7:
