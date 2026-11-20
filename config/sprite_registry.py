@@ -2,6 +2,10 @@ SPRITES = {
     # --------------------- #
     #        STATIC         #
     # --------------------- #
+    "custom_icons": {
+        "type": "static",
+        "path": "custom/photos.txt"
+    },
     "menu_anim_toy_freddy": {
         "type": "static",
         "path": "menu/anim/toy_freddy.txt"
@@ -1032,6 +1036,12 @@ SPRITES = {
         "type": "generated"
     },
     "stars": {
+        "type": "generated"
+    },
+    "custom_options_grid": {
+        "type": "generated"
+    },
+    "custom_options_ready": {
         "type": "generated"
     },
 }

@@ -22,10 +22,13 @@ CAMERA_KEYBINDS = {
 }
 
 class GameScene(Scene):
-    def __init__(self, app, save_state, params):
+    def __init__(self, app, save_state, params, anim_intelligence = None):
         super().__init__(app)
         debug_log(params)
-        self.game = Game(params["night_num"])
+        self.game = Game(
+            params["night_num"],
+            params.get("anim", anim_intelligence)
+        )
         self.save_state = save_state
         self.tick_rate = 0.10
         self._last_tick = time.time()

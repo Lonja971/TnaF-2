@@ -9,7 +9,9 @@ from engine.generator_fx import (
     generate_camera_map,
     generate_camera_music_box_power,
     generate_ascii_text,
-    generate_stars
+    generate_stars,
+    generate_custom_options_grid,
+    generate_custom_options_ready
 )
 
 GENERATORS = {
@@ -23,5 +25,7 @@ GENERATORS = {
     "camera_map": generate_camera_map,
     "music_box_power": generate_camera_music_box_power,
     "ascii_text": generate_ascii_text,
-    "stars": generate_stars
+    "stars": generate_stars,
+    "custom_options_grid": generate_custom_options_grid,
+    "custom_options_ready": generate_custom_options_ready
 }

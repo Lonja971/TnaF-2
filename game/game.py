@@ -3,9 +3,9 @@ from .scene_frames import GameSceneFrames
 from utils.log import debug_log
 
 class Game:
-    def __init__(self, night_num):
+    def __init__(self, night_num, anim_intelligence = None):
         self.night = night_num
-        self.state = GameState(night_num)
+        self.state = GameState(night_num, anim_intelligence)
         self.scene_frames = GameSceneFrames(self.state, self.night)
 
     def update_states(self, dt):

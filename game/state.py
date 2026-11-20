@@ -16,15 +16,20 @@ from game.anim.bb import BB
 from game.anim.puppet import Puppet
 
 class GameState:
-    def __init__(self, night_num):
+    def __init__(self, night_num, anim_intelligence = None):
         self.state = "processing" # screamer_anima / end
         self.night_num = night_num
         self.screamer_anima_name = None
         self.buttery = ButterySystem()
         self.music_box = MusicBox(1)
         self.time = TimeSystem()
+        if anim_intelligence:
+            self.anim_data = anim_intelligence
+        else:
+            self.anim_data = NIGHTS.get(night_num, NIGHTS[1])["anim"]
 
-        self.anim_data = NIGHTS.get(night_num, NIGHTS[1])["anim"]
+        debug_log(self.anim_data)
+
         self.locations = {}
         self.animatronics = {
             "new_bon": NewBon(self.anim_data.get("new_bon", {}).get("intelligence", 0), self.locations),

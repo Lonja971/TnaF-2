@@ -86,6 +86,83 @@ def generate_main_menu_options(element_data):
 
     return frame
 
+
+def generate_custom_options_grid(element_data):
+    CUSTOM_OPTIONS_INTEL_SPACING = 39
+    CUSTOM_OPTIONS_ROW_SPACING = 32
+    data = element_data["data"]
+    matrix = data["matrix"]
+    cursor = data["cursor"]
+    frame = []
+    grid_rows = [
+        (row_index, [item for item in row if item.get("name") != "ready"])
+        for row_index, row in enumerate(matrix)
+    ]
+    grid_rows = [(row_index, row) for row_index, row in grid_rows if row]
+
+    for grid_row_index, (row_index, row) in enumerate(grid_rows):
+        row_lines = [[] for _ in range(ASCII_ALPHABET_HEIGHT)]
+
+        for item_index, item in enumerate(row):
+            text = f"{item['intel']:>2}"
+            selected = cursor == [row_index, item_index]
+            ascii_lines = ["" for _ in range(ASCII_ALPHABET_HEIGHT)]
+
+            for char in text.lower():
+                block = ASCII_ALPHABET.get(
+                    char,
+                    [char] + [" "] * (ASCII_ALPHABET_HEIGHT - 1)
+                )
+                block = [line.rjust(2) for line in block]
+                for line_index in range(ASCII_ALPHABET_HEIGHT):
+                    ascii_lines[line_index] += block[line_index]
+
+            for line_index, line in enumerate(ascii_lines):
+                for char in line:
+                    if selected:
+                        if char == "№":
+                            char = "."
+                        row_lines[line_index].append((char, curses.A_REVERSE))
+                    else:
+                        row_lines[line_index].append((char, 0))
+
+                if item_index < len(row) - 1:
+                    row_lines[line_index].extend(
+                        [(" ", 0)] * CUSTOM_OPTIONS_INTEL_SPACING
+                    )
+
+        frame.extend(row_lines)
+        if grid_row_index < len(grid_rows) - 1:
+            frame.extend([""] * CUSTOM_OPTIONS_ROW_SPACING)
+
+    return frame
+
+
+def generate_custom_options_ready(element_data):
+    data = element_data["data"]
+    selected = data.get("cursor") == data.get("ready_position")
+    frame = []
+    ascii_lines = ["" for _ in range(ASCII_ALPHABET_HEIGHT)]
+
+    for char in "ready":
+        block = ASCII_ALPHABET.get(
+            char,
+            [char] + [" "] * (ASCII_ALPHABET_HEIGHT - 1)
+        )
+        for line_index in range(ASCII_ALPHABET_HEIGHT):
+            ascii_lines[line_index] += block[line_index]
+
+    for line in ascii_lines:
+        line_data = []
+        for char in line:
+            if selected and char == "№":
+                char = "."
+            line_data.append((char, curses.A_REVERSE if selected else 0))
+        frame.append(line_data)
+
+    return frame
+
+
 def generate_ascii_text(element_data):
     text = element_data["data"]["text"].replace("/n", "\n")
     frame = []

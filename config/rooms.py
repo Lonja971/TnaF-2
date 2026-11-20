@@ -1499,4 +1499,39 @@ ROOMS = {
             }
         }
     },
+    "custom_options": {
+        "bg": {
+            "name": "background_black"
+        },
+        "sprites": {
+            "custom_icons": {
+                "name": "custom_icons",
+                "x": "left",
+                "y": "top",
+                "z": 2,
+                "padding": {"x":45, "y":8}
+            },
+            "custom_options_grid": {
+                "name": "custom_options_grid",
+                "x": "left",
+                "y": "top",
+                "z": 3,
+                "padding": {"x": 60, "y": 32}
+            },
+            "custom_options_ready": {
+                "name": "custom_options_ready",
+                "x": "right",
+                "y": "bottom",
+                "z": 3,
+                "padding": {"x": 8, "y": 4}
+            },
+            "return": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 4, "y": 4}
+            },
+        }
+    },
 }
