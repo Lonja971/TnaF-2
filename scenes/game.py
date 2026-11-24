@@ -72,6 +72,16 @@ class GameScene(Scene):
         self.curr_frame_data = {
             "room": "game_start_night",
             "sprites": {
+                "glitch": {
+                    "type": "animation",
+                    "update_in": SPRITES["glitch_white"]["update_in"],
+                    "frames_num": 6,
+                    "mode": "hold",
+                    "data": {
+                        "curr_frame": 0,
+                        "last_update": time.time()
+                    }
+                },
                 "time": {
                     "type": "generated",
                     "data": {

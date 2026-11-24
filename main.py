@@ -1,5 +1,6 @@
 import curses, sys
 from engine.scenes_manager import  ScenesManager
+from utils.print_border import print_border
 from utils.config_manager import ensure_config
 from utils.save import load_config
 from utils.paths import SAVE_DIR
@@ -31,13 +32,8 @@ def check_ter_size(stdscr, config):
     h, w = stdscr.getmaxyx()
     if w < config["terminal_min_width"] or h < config["terminal_min_height"]:
         curses.endwin()
-        for i in range(config["terminal_min_height"]):
-            if i == 0:
-                print("#"*config["terminal_min_width"])
-            else:
-                print("#")
-
-        print("Not enought")
+        print_border()
+        print("\nThe window is too small!\nCan you see the image at the top? Click on the '-' sign until the image is the right size")
         sys.exit()
 
 curses.wrapper(main)

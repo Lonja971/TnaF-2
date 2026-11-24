@@ -1208,6 +1208,12 @@ ROOMS = {
             "name": "background_black"
         },
         "sprites": {
+            "glitch": {
+                "name": "glitch_white",
+                "x": 0,
+                "y": 0,
+                "z": 5
+            },
             "time": {
                 "name": "ascii_text",
                 "x": "right",
@@ -1229,6 +1235,19 @@ ROOMS = {
             "name": "None",
         },
         "sprites": {
+            "its_me": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "top",
+                "z": 11,
+                "padding": {"x":4, "y":2}
+            },
+            "glitch": {
+                "name": "glitch_white",
+                "x": 0,
+                "y": 0,
+                "z": 12
+            },
             "nightmare_mask": {
                 "name": "nightmare_mask",
                 "x": "right",

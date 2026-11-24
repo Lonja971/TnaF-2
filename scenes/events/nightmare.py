@@ -1,6 +1,7 @@
 from engine.scene import Scene
 from utils.save import update_config_value
 from pynput import keyboard
+from config.sprite_registry import SPRITES
 from config.rooms import ROOMS
 import time
 
@@ -57,8 +58,21 @@ class Nightmare(Scene):
         self.timer = self.timer + 1
         if self.timer >= 550 and not self.is_black:
             self.curr_frame_data["sprites"]["background_black"] = {"type": "generated"}
+            self.curr_frame_data["sprites"]["its_me"] = {"type": "generated", "data": { "text": "Its me" }}
             self.is_black = True
-        elif self.timer >= 580:
+        elif self.timer == 540:
+            self.curr_frame_data["sprites"]["glitch"] = {
+                "type": "animation",
+                "update_in": SPRITES["glitch_white"]["update_in"],
+                "frames_num": 6,
+                "mode": "hold",
+                "data": {
+                    "curr_frame": 0,
+                    "last_update": time.time()
+                }
+            }
+
+        elif self.timer >= 610:
             all_completed_events = self.save_state.data["completed_events"]
             all_completed_events.append(self.event_name)
             update_config_value("save.json", "completed_events", all_completed_events)

@@ -482,6 +482,32 @@ SPRITES = {
     # --------------------- #
     #      ANIMATIONS       #
     # --------------------- #
+    "glitch_white": {
+        "type": "animation",
+        "frames": [
+            "glitch/white/0.txt",
+            "glitch/white/4.txt",
+            "glitch/white/1.txt",
+            "glitch/white/2.txt",
+            "glitch/white/3.txt",
+            "game/transparent.txt",
+        ],
+        "update_in": 0.1,
+        "mode": "hold",
+    },
+    "glitch_black": {
+        "type": "animation",
+        "frames": [
+            "glitch/black/0.txt",
+            "glitch/black/1.txt",
+            "glitch/black/2.txt",
+            "glitch/black/3.txt",
+            "glitch/black/4.txt",
+            "game/transparent.txt",
+        ],
+        "update_in": 0.1,
+        "mode": "hold",
+    },
     "newspaper_uit": {
         "type": "animation",
         "frames": [

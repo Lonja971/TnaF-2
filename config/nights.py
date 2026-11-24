@@ -1,18 +1,18 @@
 NIGHTS = {
     1: {
         "anim": {
-            #"new_bon" : {
-            #    "intelligence": 20
-            #},
-            #"new_bird" : {
-            #    "intelligence": 20
-            #},
-            "new_fred" : {
-                "intelligence": 2
+            "new_bon" : {
+                "intelligence": 10
             },
-            #"new_bird" : {
-            #    "intelligence": 1
-            #},
+            "new_bird" : {
+                "intelligence": 10
+            },
+            "new_fred" : {
+                "intelligence": 10
+            },
+            "mangle" : {
+                "intelligence": 10
+            },
         }
     },
     7: {
