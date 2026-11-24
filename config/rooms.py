@@ -173,6 +173,39 @@ ROOMS = {
             }
         }
     },
+    "paycheck7": {
+        "bg": {
+            "name": "background_black",
+        },
+        "sprites": {
+            "text": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 5, "y": 3}
+            },
+            "paycheck7": {
+                "name": "paycheck7",
+                "x": "left",
+                "y": "top",
+                "z": 3
+            },
+            "paycheck7_uit": {
+                "name": "paycheck7_uit",
+                "x": "left",
+                "y": "top",
+                "z": 5
+            },
+            "theend": {
+                "name": "ascii_text",
+                "x": "right",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 4, "y": 2}
+            }
+        }
+    },
     "game_office_l": {
         "bg": {
             "name": "game_office_l",
@@ -1235,6 +1268,13 @@ ROOMS = {
             "name": "None",
         },
         "sprites": {
+            "instruc": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "bottom",
+                "z": 7,
+                "padding": {"x":135, "y":4}
+            },
             "its_me": {
                 "name": "ascii_text",
                 "x": "left",

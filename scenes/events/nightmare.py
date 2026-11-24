@@ -28,7 +28,9 @@ class Nightmare(Scene):
                 }
             }
         }
-        if self.night_num == 4:
+        if self.night_num == 0:
+            self.curr_frame_data["sprites"]["instruc"] = {"type": "generated", "data": {"text": "<     arrows     >"}}
+        elif self.night_num == 4:
             self.curr_frame_data["sprites"]["nightmare_poppet"] = {"type": "static"}
         self.add_location()
         self.check_if_bon_bird()
@@ -55,6 +57,8 @@ class Nightmare(Scene):
 
 
     def extra_update(self):
+        if self.night_num == 0 and self.timer == 150:
+            self.curr_frame_data["sprites"].pop("instruc")
         self.timer = self.timer + 1
         if self.timer >= 550 and not self.is_black:
             self.curr_frame_data["sprites"]["background_black"] = {"type": "generated"}

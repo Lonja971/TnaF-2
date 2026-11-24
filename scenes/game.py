@@ -91,7 +91,7 @@ class GameScene(Scene):
                 "night": {
                     "type": "generated",
                     "data": {
-                        "text": f"{params["night_num"]}st Night"
+                        "text": f"{params["night_num"]} st Night"
                     }
                 },
             }
@@ -100,7 +100,9 @@ class GameScene(Scene):
     def extra_update(self):
         if not self.is_preview_ended:
             self.preview_time = self.preview_time + 1
-            if self.preview_time >= 100:
+            if self.preview_time == 87:
+                self.curr_frame_data["sprites"]["glitch"]["data"]["curr_frame"] = 0
+            elif self.preview_time >= 100:
                 self.is_preview_ended = True
                 self.curr_frame_data = self.start_frames
 

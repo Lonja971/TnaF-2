@@ -4,6 +4,7 @@ from scenes.events.newspaper import Newspaper
 from scenes.events.nightmare import Nightmare
 from scenes.events.pay5 import PayCheck5
 from scenes.events.pay6 import PayCheck6
+from scenes.events.pay7 import PayCheck7
 from scenes.custom_options import CustomOptions
 from scenes.game import GameScene
 from scenes.settings import SettingsScene
@@ -23,6 +24,7 @@ class ScenesManager:
             "newspaper": Newspaper,
             "nightmare": Nightmare,
             "pay5": PayCheck5,
+            "pay7": PayCheck7,
             "pay6": PayCheck6,
             "custom_options": CustomOptions
         }
