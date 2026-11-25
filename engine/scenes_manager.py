@@ -2,6 +2,7 @@ import curses
 from scenes.main_menu import MainMenu
 from scenes.events.newspaper import Newspaper
 from scenes.events.nightmare import Nightmare
+from scenes.instruction import Instruction
 from scenes.events.pay5 import PayCheck5
 from scenes.events.pay6 import PayCheck6
 from scenes.events.pay7 import PayCheck7
@@ -26,6 +27,7 @@ class ScenesManager:
             "pay5": PayCheck5,
             "pay7": PayCheck7,
             "pay6": PayCheck6,
+            "instruction": Instruction,
             "custom_options": CustomOptions
         }
         self.current_scene = None

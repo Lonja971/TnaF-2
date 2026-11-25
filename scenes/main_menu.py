@@ -151,8 +151,8 @@ class MainMenu(Scene):
 
         self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("New  game")
         self.options_action.append(lambda: new_game(self.app, self.save_state.update))
-        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Settings")
-        self.options_action.append(lambda: self.app.set_scene("settings"))
+        self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Instructions")
+        self.options_action.append(lambda: self.app.set_scene("instruction"))
         self.curr_frame_data["sprites"]["main_menu_options"]["data"]["options"].append("Quit")
         self.options_action.append(lambda: sys.exit())
 

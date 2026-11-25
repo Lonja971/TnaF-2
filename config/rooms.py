@@ -1273,7 +1273,7 @@ ROOMS = {
                 "x": "left",
                 "y": "bottom",
                 "z": 7,
-                "padding": {"x":135, "y":4}
+                "padding": {"x":133, "y":4}
             },
             "its_me": {
                 "name": "ascii_text",
@@ -1590,6 +1590,27 @@ ROOMS = {
                 "y": "bottom",
                 "z": 4,
                 "padding": {"x": 4, "y": 4}
+            },
+        }
+    },
+    "instruction": {
+        "bg": {
+            "name": "background_black"
+        },
+        "sprites": {
+            "return": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "bottom",
+                "z": 4,
+                "padding": {"x": 4, "y": 4}
+            },
+            "inst": {
+                "name": "ascii_text",
+                "x": "left",
+                "y": "top",
+                "z": 5,
+                "padding": {"x": 51, "y": 35}
             },
         }
     },
