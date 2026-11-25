@@ -33,7 +33,7 @@ def check_ter_size(stdscr, config):
     if w < config["terminal_min_width"] or h < config["terminal_min_height"]:
         curses.endwin()
         print_border()
-        print("\nThe window is too small!\nCan you see the image at the top? Click on the '-' sign until the image is the right size")
+        print("\nThe window is too small!\nCan you see the image at the top? Click 'cntr' + '-' sign until the image is the right size and restart the game")
         sys.exit()
 
 curses.wrapper(main)
