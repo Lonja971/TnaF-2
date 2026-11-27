@@ -10,6 +10,19 @@ class GameSceneFrames:
         self.last_scene = None
         self.game_over_noice_timer = 0
 
+    def puppet_camera_sprite(self):
+        puppet = self.state.animatronics["puppet"]
+        if puppet.pos != 11:
+            return None
+
+        if not puppet.is_released:
+            stage = 1
+        elif puppet.escape_progress < 0.5:
+            stage = 2
+        else:
+            stage = 3
+        return f"cam_11_puppet{stage}"
+
     def office_frames(self, curr_scene_frames, anim_state):
         fan_name = ROOMS[f"game_office_{"l" if self.state.office_pos == "l" else "r"}"]["sprites"]["office_fan_anima"]["name"]
         mask_name_on = "mask_anima_on"
@@ -497,6 +510,10 @@ class GameSceneFrames:
                     "type": "static"
                 }
 
+        puppet_sprite = self.puppet_camera_sprite()
+        if self.state.active_camera_num == 11 and puppet_sprite:
+            frames[puppet_sprite] = {"type": "static"}
+
 
         self.state.is_tablet_opening_anim = False
 
@@ -505,6 +522,9 @@ class GameSceneFrames:
     def update_camera_frames(self, curr_scene_frames, anim_state):
         active_cam_name = f"cam_{self.state.active_camera_num}"
         allowed = {active_cam_name, f"{active_cam_name}_l"}
+        puppet_sprite = self.puppet_camera_sprite()
+        if self.state.active_camera_num == 11 and puppet_sprite:
+            allowed.add(puppet_sprite)
         curr_sprites_frames = curr_scene_frames["sprites"]
         frames_data = {
             "update": {},
@@ -620,12 +640,23 @@ class GameSceneFrames:
 
             for name, anim_class in self.state.animatronics.items():
                 if anim_class.pos == self.state.active_camera_num:
-                    frames_data["update"][f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}"] = {
-                        "type": "static"
-                    }
+                    sprite_name = (
+                        puppet_sprite
+                        if name == "puppet" and self.state.active_camera_num == 11
+                        else f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}"
+                    )
+                    if sprite_name in ROOMS[curr_scene_frames["room"]]["sprites"]:
+                        frames_data["update"][sprite_name] = {
+                            "type": "static"
+                        }
                 else:
-                    if f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}" in curr_sprites_frames:
-                        frames_data["delete"].append(f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}")
+                    sprite_name = (
+                        puppet_sprite
+                        if name == "puppet" and self.state.active_camera_num == 11
+                        else f"{active_cam_name}_{name}{"_l" if self.state.is_camera_light else ""}"
+                    )
+                    if sprite_name in curr_sprites_frames:
+                        frames_data["delete"].append(sprite_name)
 
         return frames_data
 

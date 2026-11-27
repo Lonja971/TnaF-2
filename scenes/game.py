@@ -140,6 +140,12 @@ class GameScene(Scene):
     def handle_input(self, input):
         if not self.is_preview_ended: return
 
+        self.game.state.is_winding_music_box = (
+            self.game.state.is_camera_open
+            and self.game.state.active_camera_num == 11
+            and input.is_held(keyboard.KeyCode.from_char('x'))
+        )
+
         if self.game.state.state == "end" and not self.game.state.time.is_end_night():
             if (input.was_pressed(keyboard.Key.enter)
                 or input.was_pressed(keyboard.KeyCode.from_char('\n'))
@@ -180,7 +186,7 @@ class GameScene(Scene):
         if input.was_pressed(keyboard.KeyCode.from_char('x')):
             if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
                 if self.game.state.active_camera_num == 11:
-                    self.game.state.music_box.charge()
+                    pass
                 else:
                     self.game.state.set_camera_light()
             else:
@@ -195,7 +201,7 @@ class GameScene(Scene):
         if input.was_pressed(keyboard.KeyCode.from_char('z')):
             if self.game.state.is_camera_open or self.game.state.is_tablet_opening_anim:
                 if self.game.state.active_camera_num == 11:
-                    self.game.state.music_box.charge()
+                    pass
             else:
                 self.game.state.set_light("left")
 

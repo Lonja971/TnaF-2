@@ -1,17 +1,31 @@
-from utils.log import debug_log
-
 class MusicBox:
-    def __init__(self, discharge_per_tick):
+    # The original box starts at 2000 and loses 2-6 points every 0.05 seconds.
+    # Power is displayed on a 0-100 scale here, so these are the equivalent rates.
+    DISCHARGE_PER_SECOND = {
+        1: 2.0,
+        2: 2.0,
+        3: 3.0,
+        4: 4.0,
+        5: 5.0,
+        6: 6.0,
+        7: 6.0,
+    }
+
+    def __init__(self, night_num):
         self.power = 100
-        self.charge_per_tick = 5
-        self.discharge_per_tick = discharge_per_tick
+        self.charge_per_second = 15.0
+        self.discharge_per_second = self.DISCHARGE_PER_SECOND.get(night_num, 6.0)
+        self.starts_at_two_am = night_num == 1
 
-    def update(self, state):
-        if self.power == 0: return
+    def update(self, state, dt):
+        if self.starts_at_two_am and state.time.time[0] in (12, 1):
+            return
 
-        self.power -= self.discharge_per_tick
+        if state.is_winding_music_box:
+            self.power = min(100.0, self.power + self.charge_per_second * dt)
+            return
 
-    def charge(self):
-        new_level = self.power + self.charge_per_tick
-        if new_level > 100: new_level = 100
-        self.power = new_level
+        self.power = max(0.0, self.power - self.discharge_per_second * dt)
+
+    def charge(self, amount=5):
+        self.power = min(100.0, self.power + amount)

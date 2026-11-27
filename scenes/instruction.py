@@ -24,7 +24,7 @@ class Instruction(Scene):
 for  light  use:                               turn  left                      ↑                      turn  right
 z  /  x  /  c                                                      <                                                   >
                                                                                                      ↓                 
-load  the  music  box:                                                put  on  a  mask
+hold  x  on  camera  11:                                            put  on  a  mask
 x
 """
                     }

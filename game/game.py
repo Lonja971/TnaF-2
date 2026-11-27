@@ -8,6 +8,19 @@ class Game:
         self.state = GameState(night_num, anim_intelligence)
         self.scene_frames = GameSceneFrames(self.state, self.night)
 
+    def apply_night_ai_changes(self):
+        schedule = self.state.ai_schedule
+        if not schedule:
+            return
+
+        hour = self.state.time.time[0]
+        for change_hour, changes in schedule.items():
+            if hour != change_hour or change_hour in self.state.applied_ai_changes:
+                continue
+            for name, intelligence in changes.items():
+                self.state.animatronics[name].set_intelligence(intelligence)
+            self.state.applied_ai_changes.add(change_hour)
+
     def update_states(self, dt):
         if self.state.time.is_end_night():
             if not self.state.is_night_progress_saved:
@@ -17,30 +30,21 @@ class Game:
 
         if self.state.state == "end": return
 
+        self.apply_night_ai_changes()
+
+        if self.state.state == "screamer_anima":
+            return
+
+        # Apply winding before Puppet checks whether it should keep emerging or retreat.
+        self.state.music_box.update(self.state, dt)
+
         for name, anim_class in self.state.animatronics.items():
-            if anim_class.intelligence > 0:
-                if not anim_class.is_active:
-                    if anim_class.activation_time[0] >= self.state.time.time[0] and anim_class.activation_time[1] <= self.state.time.time[1]:
-                        anim_class.is_active = True
-                else:
-                    if 15 in self.state.locations and len(self.state.locations[15]) > 0 and name in self.state.locations[15]:
-                        if not self.state.is_mask:
-                            anim_class.screamer_value += 1
-
-                    elif 20 in self.state.locations and len(self.state.locations[20]) > 0 and name in self.state.locations[20]:
-                        if anim_class.screamer_timer <= 0:
-                            if self.state.is_mask or self.state.is_camera_open:
-                                self.state.screamer_disabeling()
-                                anim_class.screamer_timer = 3
-                            else:
-                                self.state.set_screamer_anima(self.state.locations[20][0])
-                        else:
-                            anim_class.process_screamer_waiting()
-
-                    anim_class.update()
+            anim_class.update(dt)
+            if anim_class.pos == 20:
+                self.state.set_screamer_anima(name)
+                break
 
         self.state.buttery.update(self.state, dt)
-        self.state.music_box.update(self.state)
         self.state.time.update(self.state)
 
     def update_scene_frames(self, curr_scene_frames, anim_state):

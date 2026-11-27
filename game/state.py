@@ -21,28 +21,19 @@ class GameState:
         self.night_num = night_num
         self.screamer_anima_name = None
         self.buttery = ButterySystem()
-        self.music_box = MusicBox(1)
+        self.music_box = MusicBox(night_num)
         self.time = TimeSystem()
-        if anim_intelligence:
+        self.is_custom_night = anim_intelligence is not None
+        self.night_config = NIGHTS.get(night_num, NIGHTS[1])
+        if self.is_custom_night:
             self.anim_data = anim_intelligence
         else:
-            self.anim_data = NIGHTS.get(night_num, NIGHTS[1])["anim"]
+            self.anim_data = self.night_config["anim"]
+        self.ai_schedule = None if self.is_custom_night else self.night_config.get("ai_changes", {})
+        self.applied_ai_changes = set()
 
         debug_log(self.anim_data)
 
-        self.locations = {}
-        self.animatronics = {
-            "new_bon": NewBon(self.anim_data.get("new_bon", {}).get("intelligence", 0), self.locations),
-            "new_fred": NewFred(self.anim_data.get("new_fred", {}).get("intelligence", 0), self.locations),
-            "new_bird": NewBird(self.anim_data.get("new_bird", {}).get("intelligence", 0), self.locations),
-            "old_bon": OldBon(self.anim_data.get("old_bon", {}).get("intelligence", 0), self.locations),
-            "old_fred": OldFred(self.anim_data.get("old_fred", {}).get("intelligence", 0), self.locations),
-            "old_bird": OldBird(self.anim_data.get("old_bird", {}).get("intelligence", 0), self.locations),
-            "old_foxy": OldFoxy(self.anim_data.get("old_foxy", {}).get("intelligence", 0), self.locations),
-            "mangle": Mangle(self.anim_data.get("mangle", {}).get("intelligence", 0), self.locations),
-            "bb": BB(self.anim_data.get("bb", {}).get("intelligence", 0), self.locations),
-            "puppet": Puppet(self.anim_data.get("puppet", {}).get("intelligence", 0), self.locations),
-        }
         self.office_pos = "l"
         self.is_camera_open = False
         self.is_camera_light = False
@@ -52,7 +43,25 @@ class GameState:
         self.is_6am_anim_finished = False
         self.is_mask = False
         self.is_removing_mask = False
+        self.is_winding_music_box = False
         self.light = None
+
+        self.locations = {}
+        self.animatronics = {
+            "new_bon": NewBon(self.anim_data.get("new_bon", {}).get("intelligence", 0), self),
+            "new_fred": NewFred(self.anim_data.get("new_fred", {}).get("intelligence", 0), self),
+            "new_bird": NewBird(self.anim_data.get("new_bird", {}).get("intelligence", 0), self),
+            "old_bon": OldBon(self.anim_data.get("old_bon", {}).get("intelligence", 0), self),
+            "old_fred": OldFred(self.anim_data.get("old_fred", {}).get("intelligence", 0), self),
+            "old_bird": OldBird(self.anim_data.get("old_bird", {}).get("intelligence", 0), self),
+            "old_foxy": OldFoxy(self.anim_data.get("old_foxy", {}).get("intelligence", 0), self),
+            "mangle": Mangle(self.anim_data.get("mangle", {}).get("intelligence", 0), self),
+            "bb": BB(self.anim_data.get("bb", {}).get("intelligence", 0), self),
+            "puppet": Puppet(self.anim_data.get("puppet", {}).get("intelligence", 0), self),
+        }
+        for name, animatronic in self.animatronics.items():
+            if animatronic.intelligence > 0:
+                animatronic.activate()
 
         self.is_mask_disabled = False
         self.is_tablet_disabled = False

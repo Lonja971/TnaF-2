@@ -1,105 +1,171 @@
+import random
+import time
+
 from config.anim import ANIMATRONICS
-import time, random
 from utils.log import debug_log
-from utils.game_logic import calculate_activation_time, calculate_iter_for_screamer
+
 
 class Anim:
-    def __init__(self, intelligence, locations):
-        self.locations = locations
+    """Shared movement and office-defense behavior for FNaF 2 animatronics."""
+
+    MOVE_INTERVAL = 5.0
+    MASK_REPEL_TIME = 5.0
+    VENT_POSITIONS = {5, 6, 16, 17}
+
+    def __init__(self, intelligence, game_state):
+        self.game_state = game_state
+        self.locations = game_state.locations
         anim_data = ANIMATRONICS[self.name]
         self.def_pos = anim_data["default_position"]
+        self.reset_pos = anim_data.get("reset_position", self.def_pos)
         self.path_graph = anim_data["path_graph"]
-        self.need_time_to_check = anim_data["checking_time"]
+        self.pos = self.def_pos
+        self.intelligence = self._clamp_intelligence(intelligence)
         self.is_active = False
         self.is_attacking = False
-
-        self.intelligence = intelligence
-        self.pos = self.def_pos
-        self.move_time = anim_data["move_time"]
-        self.value_for_screamer = calculate_iter_for_screamer(intelligence)
-        self.office_time = anim_data["office_time"]
-        self.activation_time = calculate_activation_time(intelligence)
         self.next_move_time = None
+        self.office_attack_time = 0.0
+        self.mask_hold_time = 0.0
+        self.phase = "idle"
 
-        self.screamer_value = 0
-        self.checking_time = 0
-        self.screamer_timer = 20
+        self.locations.setdefault(self.pos, []).append(self.name)
 
-        if self.pos not in self.locations:
-            self.locations[self.pos] = []
-        self.locations[self.pos].append(self.name)
+    @staticmethod
+    def _clamp_intelligence(intelligence):
+        return max(0, min(20, int(intelligence or 0)))
 
-        debug_log(f"{self.name} - {self.activation_time}")
+    def set_intelligence(self, intelligence):
+        was_inactive = self.intelligence <= 0
+        self.intelligence = self._clamp_intelligence(intelligence)
+        if was_inactive and self.intelligence > 0:
+            self.activate()
 
-    def process_screamer_waiting(self):
-        self.screamer_timer -= 1
+    def activate(self):
+        self.is_active = True
+        if self.next_move_time is None:
+            self.schedule_next_move()
 
-    def schedule_next_move(self):
-        speed = self.intelligence * 0.4
-        delay = max(2.0, self.move_time - speed)
-        delay += random.uniform(-1.5, 1.5)
-
-        self.next_move_time = time.time() + delay
+    def schedule_next_move(self, delay=None):
+        if delay is None:
+            delay = self.MOVE_INTERVAL
+        self.next_move_time = time.monotonic() + delay
 
     def try_move(self):
-        roll = random.randint(0, 1)
+        return random.randint(1, 20) <= self.intelligence
 
-        return roll < self.intelligence
+    def can_move_to(self, new_pos):
+        occupants = self.locations.get(new_pos, [])
+        others = [name for name in occupants if name != self.name]
+
+        if new_pos in self.VENT_POSITIONS and others:
+            return False
+
+        if new_pos == 1 and self.name == "old_bon" and "new_bird" in others:
+            return False
+        if new_pos == 1 and self.name == "new_bird" and "old_bon" in others:
+            return False
+        if new_pos == 4 and self.name == "old_bird" and "new_bird" in others:
+            return False
+        if new_pos == 4 and self.name == "new_bird" and "old_bird" in others:
+            return False
+
+        if new_pos == 15:
+            attackers = [name for name in others if name != "bb"]
+            if attackers:
+                return False
+            if self.name != "bb" and self.pos in {16, 17} and not self.game_state.is_camera_open:
+                return False
+
+        return True
 
     def move(self):
-        posible_positions = self.path_graph.get(self.pos, [])
-        if len(posible_positions) == 0:
-            self.change_pos(self.def_pos)
+        possible_positions = self.path_graph.get(self.pos, [])
+        if not possible_positions:
+            self.change_pos(self.reset_pos)
             return
-        
-        index = random.randint(1, len(posible_positions))
-        self.change_pos(posible_positions[index - 1])
+
+        possible_positions = list(possible_positions)
+        random.shuffle(possible_positions)
+        for new_pos in possible_positions:
+            if self.can_move_to(new_pos):
+                self.change_pos(new_pos)
+                return
         self.schedule_next_move()
 
     def change_pos(self, new_pos):
-        self.screamer_value = 0
-        self.checking_time = 0
-
-        if self.name in self.locations[self.pos]:
-            self.locations[self.pos].remove(self.name)
+        old_pos = self.pos
+        old_occupants = self.locations.get(old_pos, [])
+        if self.name in old_occupants:
+            old_occupants.remove(self.name)
 
         self.pos = new_pos
+        self.locations.setdefault(new_pos, []).append(self.name)
+        self.office_attack_time = 0.0
+        self.mask_hold_time = 0.0
+        self.is_attacking = False
+        self.phase = self.phase_for_position(new_pos)
+        self.schedule_next_move()
+        debug_log(f"{self.name} moved from {old_pos} to {new_pos}")
 
-        if self.pos not in self.locations:
-            self.locations[self.pos] = []
-        self.locations[self.pos].append(self.name)
+    def phase_for_position(self, position):
+        return "office" if position == 15 else "moving"
 
-        debug_log(f"{self.name} moved to {self.pos}")
-
-    def process_office_watching(self):
-        if self.screamer_value >= self.value_for_screamer:
-            self.is_attacking = True
-
-        self.checking_time += 1
-
-        if self.checking_time >= self.need_time_to_check:
-            if self.is_attacking:
-                self.change_pos(20)
-            else:
-                self.change_pos(self.def_pos)
-
-    def update(self):
-        if not self.is_active:
-            return
-        
-        if self.pos == 15:
-            self.next_move_time = None
-            self.process_office_watching()
-            debug_log(f"{self.name} = {self.pos} - {self.screamer_value} ({self.value_for_screamer})")
-            return
-
-        if self.next_move_time == None:
+    def return_after_mask(self):
+        target = self.reset_pos
+        if not self.can_move_to(target):
+            target = self.def_pos
+        if not self.can_move_to(target):
+            # Stay in the current non-office room until its reset spot is free.
             self.schedule_next_move()
             return
-        
-        if time.time() >= self.next_move_time:
-            is_moving = self.try_move()
+        self.change_pos(target)
 
-            if is_moving:
+    def office_attack_window(self):
+        # The harder the AI, the shorter the guard's reaction window.
+        return max(0.75, 1.75 - 0.05 * (self.intelligence - 1))
+
+    def update_office(self, dt):
+        if self.game_state.is_mask:
+            self.mask_hold_time += dt
+            if self.mask_hold_time >= self.MASK_REPEL_TIME:
+                self.return_after_mask()
+            return
+
+        self.mask_hold_time = 0.0
+        if self.game_state.is_camera_open or self.game_state.is_tablet_opening_anim:
+            return
+
+        self.office_attack_time += dt
+        if self.office_attack_time >= self.office_attack_window():
+            self.is_attacking = True
+            self.change_pos(20)
+
+    def update_vent(self, dt):
+        if not self.game_state.is_mask:
+            self.mask_hold_time = 0.0
+            return False
+
+        self.mask_hold_time += dt
+        if self.mask_hold_time >= self.MASK_REPEL_TIME:
+            self.return_after_mask()
+        return True
+
+    def update(self, dt):
+        if not self.is_active:
+            return
+        if self.pos == 20:
+            return
+        if self.pos == 15:
+            self.update_office(dt)
+            return
+        if self.pos in {16, 17} and self.update_vent(dt):
+            return
+
+        if self.next_move_time is None:
+            self.schedule_next_move()
+            return
+        if time.monotonic() >= self.next_move_time:
+            if self.try_move():
                 self.move()
-                
+            else:
+                self.schedule_next_move()
