@@ -122,6 +122,10 @@ SPRITES = {
         "type": "static",
         "path": "game/office/anim/vent_l_new_bird.txt",
     },
+    "game_left_light_bb": {
+        "type": "static",
+        "path": "game/office/anim/vent_l_bb.txt",
+    },
     "cameras_bg": {
         "type": "static",
         "path": "game/cameras/bg.txt",

@@ -312,6 +312,12 @@ ROOMS = {
                 "y": "bottom",
                 "z": 4,
             },
+            "left_light_bb": {
+                "name": "game_left_light_bb",
+                "x": "left",
+                "y": "bottom",
+                "z": 4,
+            },
             "game_mask_on": {
                 "name": "mask_anima_on",
                 "x": "left",
@@ -361,7 +367,7 @@ ROOMS = {
                 "name": "check_new_fred",
                 "x": "right",
                 "y": "bottom",
-                "z": 7,
+                "z": 5,
                 "padding": {"x": 40, "y": 0}
             },
             "check_mangle": {
@@ -610,7 +616,7 @@ ROOMS = {
                 "name": "check_new_fred",
                 "x": "right",
                 "y": "bottom",
-                "z": 7,
+                "z": 5,
                 "padding": {"x": 95, "y": 0}
             },
             "check_new_bird": {
@@ -743,7 +749,7 @@ ROOMS = {
                 "x": "right",
                 "y": "bottom",
                 "z": 21,
-                "padding": {"x": 11, "y": 25}
+                "padding": {"x": 11, "y": 26}
             },
             "camera_map": {
                 "name": "camera_map",

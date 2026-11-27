@@ -9,7 +9,6 @@ class BB(Anim):
 
     def enter_office(self):
         self.change_pos(15)
-        # BB never attacks, but permanently disables the player's flashlight.
         self.game_state.buttery.power = 0
         self.game_state.light = None
         self.game_state.is_camera_light = False

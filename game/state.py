@@ -20,6 +20,7 @@ class GameState:
         self.state = "processing" # screamer_anima / end
         self.night_num = night_num
         self.screamer_anima_name = None
+        self.pending_screamer_name = None
         self.buttery = ButterySystem()
         self.music_box = MusicBox(night_num)
         self.time = TimeSystem()
@@ -78,8 +79,30 @@ class GameState:
         }
     
     def set_screamer_anima(self, name):
+        self.pending_screamer_name = None
         self.state = "screamer_anima"
         self.screamer_anima_name = name
+
+    def start_screamer(self, name):
+        if self.pending_screamer_name is not None or self.state != "processing":
+            return
+
+        self.pending_screamer_name = name
+        self.screamer_disabeling()
+        self.update_pending_screamer()
+
+    def update_pending_screamer(self):
+        if self.pending_screamer_name is None:
+            return
+
+        defenses_are_down = not (
+            self.is_mask
+            or self.is_removing_mask
+            or self.is_camera_open
+            or self.is_tablet_opening_anim
+        )
+        if defenses_are_down:
+            self.set_screamer_anima(self.pending_screamer_name)
     
     def set_office_pos(self, pos):
         if self.is_camera_open: return
@@ -106,6 +129,8 @@ class GameState:
         self.is_mask = not self.is_mask
         if self.is_mask and self.light:
             self.light = None
+        elif not self.is_mask:
+            self.is_removing_mask = True
 
     def set_camera(self):
         if self.is_mask or self.is_removing_mask: return
@@ -164,9 +189,12 @@ class GameState:
     def screamer_disabeling(self):
         self.is_mask_disabled = True
         self.is_tablet_disabled = True
+        if self.is_mask:
+            self.is_removing_mask = True
         self.is_mask = False
-        if self.is_camera_open:
+        if self.is_camera_open or self.is_tablet_opening_anim:
             self.is_camera_open = False
+            self.is_camera_light = False
             self.tablet_anim_dir = "close"
             self.is_tablet_opening_anim = True
 

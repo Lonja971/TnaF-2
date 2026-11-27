@@ -35,14 +35,18 @@ class Game:
         if self.state.state == "screamer_anima":
             return
 
+        if self.state.pending_screamer_name is not None:
+            self.state.update_pending_screamer()
+            return
+
         # Apply winding before Puppet checks whether it should keep emerging or retreat.
         self.state.music_box.update(self.state, dt)
 
         for name, anim_class in self.state.animatronics.items():
             anim_class.update(dt)
             if anim_class.pos == 20:
-                self.state.set_screamer_anima(name)
-                break
+                self.state.start_screamer(name)
+                return
 
         self.state.buttery.update(self.state, dt)
         self.state.time.update(self.state)

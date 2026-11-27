@@ -11,7 +11,7 @@ class Puppet(Anim):
 
     def escape_duration(self):
         # Higher Puppet AI means it gets out of the box sooner.
-        return max(5.0, 15.0 - 0.5 * self.intelligence)
+        return max(4.0, 15.0 - 0.5 * self.intelligence)
 
     def schedule_next_move(self, delay=None):
         if delay is None:

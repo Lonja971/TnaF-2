@@ -23,6 +23,19 @@ class GameSceneFrames:
             stage = 3
         return f"cam_11_puppet{stage}"
 
+    def vent_light_sprite_name(self, side):
+        vent_position = 16 if side == "left" else 17
+        base_name = f"{side}_light"
+        occupants = self.state.locations.get(vent_position, [])
+        if not occupants:
+            return base_name
+
+        occupant_sprite = f"{base_name}_{occupants[0]}"
+        office_room = f"game_office_{self.state.office_pos}"
+        if occupant_sprite in ROOMS[office_room]["sprites"]:
+            return occupant_sprite
+        return base_name
+
     def office_frames(self, curr_scene_frames, anim_state):
         fan_name = ROOMS[f"game_office_{"l" if self.state.office_pos == "l" else "r"}"]["sprites"]["office_fan_anima"]["name"]
         mask_name_on = "mask_anima_on"
@@ -148,25 +161,13 @@ class GameSceneFrames:
 
         if self.state.office_pos == "l":
             if self.state.light == "left":
-                if self.state.locations.get(16) and len(self.state.locations[16]) > 0:
-                    frames["sprites"][f"left_light_{self.state.locations[16][0]}"] = {
-                        "type": "static"
-                    }
-                else:
-                    frames["sprites"]["left_light"] = {
-                        "type": "static"
-                    }
+                light_sprite = self.vent_light_sprite_name("left")
+                frames["sprites"][light_sprite] = {"type": "static"}
 
         elif self.state.office_pos == "r":
             if self.state.light == "right":
-                if self.state.locations.get(17) and len(self.state.locations[17]) > 0:
-                    frames["sprites"][f"right_light_{self.state.locations[17][0]}"] = {
-                        "type": "static"
-                    }
-                else:
-                    frames["sprites"]["right_light"] = {
-                        "type": "static"
-                    }
+                light_sprite = self.vent_light_sprite_name("right")
+                frames["sprites"][light_sprite] = {"type": "static"}
 
         if 15 in self.state.locations and len(self.state.locations[15]) > 0:
             for name in self.state.locations[15]:
@@ -237,52 +238,28 @@ class GameSceneFrames:
 
         if self.state.office_pos == "l":
             if self.state.light == "left":
-                all_anims = self.state.locations.get(16, [])
-                if len(all_anims) > 0:
-                    if f"left_light_{all_anims[0]}" not in curr_sprites_frames:
-                        frames_data["update"][f"left_light_{all_anims[0]}"] = {
-                            "type": "static",
-                        }
-                else:
-                    if "left_light" not in curr_sprites_frames:
-                        frames_data["update"]["left_light"] = {
-                            "type": "static",
-                        }
-
-                    for key in list(curr_sprites_frames.keys()):
-                        if key.startswith("left_light_"):
-                            frames_data["delete"].append(key)
+                light_sprite = self.vent_light_sprite_name("left")
+                if light_sprite not in curr_sprites_frames:
+                    frames_data["update"][light_sprite] = {"type": "static"}
+                for key in curr_sprites_frames:
+                    if key.startswith("left_light") and key != light_sprite:
+                        frames_data["delete"].append(key)
             else:
-                if "left_light" in curr_sprites_frames:
-                    frames_data["delete"].append("left_light")
-
                 for key in list(curr_sprites_frames.keys()):
-                    if key.startswith("left_light_"):
+                    if key.startswith("left_light"):
                         frames_data["delete"].append(key)
 
         if self.state.office_pos == "r":
             if self.state.light == "right":
-                all_anims = self.state.locations.get(17, [])
-                if len(all_anims) > 0:
-                    if f"right_light_{all_anims[0]}" not in curr_sprites_frames:
-                        frames_data["update"][f"right_light_{all_anims[0]}"] = {
-                            "type": "static",
-                        }
-                else:
-                    if "right_light" not in curr_sprites_frames:
-                        frames_data["update"]["right_light"] = {
-                            "type": "static",
-                        }
-
-                    for key in list(curr_sprites_frames.keys()):
-                        if key.startswith("right_light_"):
-                            frames_data["delete"].append(key)
+                light_sprite = self.vent_light_sprite_name("right")
+                if light_sprite not in curr_sprites_frames:
+                    frames_data["update"][light_sprite] = {"type": "static"}
+                for key in curr_sprites_frames:
+                    if key.startswith("right_light") and key != light_sprite:
+                        frames_data["delete"].append(key)
             else:
-                if "right_light" in curr_sprites_frames:
-                    frames_data["delete"].append("right_light")
-
                 for key in list(curr_sprites_frames.keys()):
-                    if key.startswith("right_light_"):
+                    if key.startswith("right_light"):
                         frames_data["delete"].append(key)
 
         #CHECK
@@ -352,6 +329,23 @@ class GameSceneFrames:
             }
             self.state.is_removing_mask = True
 
+        if (
+            self.state.is_removing_mask
+            and "game_mask_off" not in curr_sprites_frames
+            and "game_mask_on" not in curr_sprites_frames
+        ):
+            frames_data["update"]["game_mask_off"] = {
+                "type": "animation",
+                "update_in": SPRITES[mask_name_off]["update_in"],
+                "frames_num": len(SPRITES[mask_name_off]["frames"]),
+                "mode": SPRITES[mask_name_off]["mode"],
+                "revers": SPRITES[mask_name_off].get("revers", False),
+                "data": {
+                    "curr_frame": 0,
+                    "last_update": time.time()
+                }
+            }
+
         if "game_mask_off" in curr_sprites_frames and curr_sprites_frames["game_mask_off"]["data"]["curr_frame"] == curr_sprites_frames["game_mask_off"]["frames_num"] - 1:
             frames_data["delete"].append("game_mask_off")
             self.state.is_removing_mask = False
@@ -368,19 +362,27 @@ class GameSceneFrames:
                 }
             }
 
-        if self.state.is_tablet_opening_anim and self.state.tablet_anim_dir == "close" and "game_tablet_off" not in curr_sprites_frames:
-            frames_data["update"]["game_tablet_off"] = {
-                "type": "animation",
-                "update_in": SPRITES["tablet_anima_off"]["update_in"],
-                "frames_num": len(SPRITES["tablet_anima_off"]["frames"]),
-                "mode": SPRITES["tablet_anima_off"]["mode"],
-                "data": {
-                    "curr_frame": 0,
-                    "last_update": time.time()
+        if self.state.is_tablet_opening_anim and self.state.tablet_anim_dir == "close":
+            if "game_tablet_on" in curr_sprites_frames:
+                frames_data["delete"].append("game_tablet_on")
+            if "game_tablet_off" not in curr_sprites_frames:
+                frames_data["update"]["game_tablet_off"] = {
+                    "type": "animation",
+                    "update_in": SPRITES["tablet_anima_off"]["update_in"],
+                    "frames_num": len(SPRITES["tablet_anima_off"]["frames"]),
+                    "mode": SPRITES["tablet_anima_off"]["mode"],
+                    "data": {
+                        "curr_frame": 0,
+                        "last_update": time.time()
+                    }
                 }
-            }
 
-        if "game_tablet_on" in curr_sprites_frames and curr_sprites_frames["game_tablet_on"]["data"]["curr_frame"] == curr_sprites_frames["game_tablet_on"]["frames_num"] - 1:
+        if (
+            self.state.is_tablet_opening_anim
+            and self.state.tablet_anim_dir == "open"
+            and "game_tablet_on" in curr_sprites_frames
+            and curr_sprites_frames["game_tablet_on"]["data"]["curr_frame"] == curr_sprites_frames["game_tablet_on"]["frames_num"] - 1
+        ):
             self.state.set_camera()
 
         if "game_tablet_off" in curr_sprites_frames and curr_sprites_frames["game_tablet_off"]["data"]["curr_frame"] == curr_sprites_frames["game_tablet_off"]["frames_num"] - 1:

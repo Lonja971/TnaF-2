@@ -96,7 +96,11 @@ ANIMATRONICS = {
         "default_position": 10,
         "reset_position": 10,
         "path_graph": {
-            10: [5],
+            10: [7],
+            7: [4],
+            4: [13],
+            13: [1],
+            1: [5],
             5: [16],
             16: [15],
         },
