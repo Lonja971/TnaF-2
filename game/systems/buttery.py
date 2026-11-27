@@ -3,9 +3,9 @@ from utils.log import debug_log
 class ButterySystem:
     def __init__(self):
         self.power = 100
-        self.CENTRE_LIGHT = 0.15
-        self.SIDE_LIGTH = 0.1
-        self.CAMERA_LIGTH = 0.15
+        self.CENTRE_LIGHT = 0.12
+        self.SIDE_LIGTH = 0.09
+        self.CAMERA_LIGTH = 0.1
 
     def update(self, state, dt: float):
         drain = 0

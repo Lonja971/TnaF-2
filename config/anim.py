@@ -13,7 +13,7 @@ ANIMATRONICS = {
     },
     "new_fred": {
         "default_position": 9,
-        "reset_position": 10,
+        "reset_position": 9,
         "path_graph": {
             9: [10],
             10: [13],
@@ -69,7 +69,7 @@ ANIMATRONICS = {
     },
     "old_foxy": {
         "default_position": 18,
-        "reset_position": 8,
+        "reset_position": 18,
         "path_graph": {
             18: [8],
             8: [13],

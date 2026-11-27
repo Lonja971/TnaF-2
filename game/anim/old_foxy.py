@@ -19,8 +19,8 @@ class OldFoxy(Anim):
         if not self.is_active or self.pos == 20:
             return
 
-        if self.game_state.light == "centre":
-            self.pressure = 0.0
+        #if self.game_state.light == "centre":
+        #    self.pressure = 0.0
 
         if self.pos == 13:
             if self.game_state.light == "centre":

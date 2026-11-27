@@ -44,6 +44,7 @@ class GameState:
         self.is_6am_anim_finished = False
         self.is_mask = False
         self.is_removing_mask = False
+        self.wants_mask_after_tablet = False
         self.is_winding_music_box = False
         self.light = None
 
@@ -103,6 +104,20 @@ class GameState:
         )
         if defenses_are_down:
             self.set_screamer_anima(self.pending_screamer_name)
+
+    def update_pending_mask(self):
+        if not self.wants_mask_after_tablet:
+            return
+
+        if self.state != "processing" or self.is_mask_disabled:
+            self.wants_mask_after_tablet = False
+            return
+
+        if self.is_camera_open or self.is_tablet_opening_anim or self.is_removing_mask:
+            return
+
+        self.wants_mask_after_tablet = False
+        self.set_mask()
     
     def set_office_pos(self, pos):
         if self.is_camera_open: return
@@ -123,7 +138,11 @@ class GameState:
     def set_mask(self):
         if self.is_mask_disabled: return
         if self.is_removing_mask: return
-        if self.is_camera_open or self.is_tablet_opening_anim: return
+        if self.is_camera_open: return
+        if self.is_tablet_opening_anim:
+            if not self.is_mask and self.tablet_anim_dir == "close":
+                self.wants_mask_after_tablet = True
+            return
         if self.state == "screamer_anima": return
 
         self.is_mask = not self.is_mask
@@ -148,18 +167,17 @@ class GameState:
         if self.is_tablet_disabled: return
         if self.is_mask or self.is_removing_mask: return
 
-        self.is_tablet_opening_anim = not self.is_tablet_opening_anim
         if self.is_camera_open:
             self.tablet_anim_dir = "close"
+            self.is_camera_open = False
+            if self.is_camera_light:
+                self.is_camera_light = False
         else:
             self.tablet_anim_dir = "open"
 
-        if self.is_tablet_opening_anim and self.light:
+        self.is_tablet_opening_anim = True
+        if self.tablet_anim_dir == "open" and self.light:
             self.light = None
-
-        if self.is_camera_open:
-            self.is_camera_open = False
-            if self.is_camera_light: self.is_camera_light = False 
 
     def set_camera_light(self, is_on=True):
         if self.buttery.power <= 0: return
@@ -189,6 +207,7 @@ class GameState:
     def screamer_disabeling(self):
         self.is_mask_disabled = True
         self.is_tablet_disabled = True
+        self.wants_mask_after_tablet = False
         if self.is_mask:
             self.is_removing_mask = True
         self.is_mask = False

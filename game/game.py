@@ -39,6 +39,8 @@ class Game:
             self.state.update_pending_screamer()
             return
 
+        self.state.update_pending_mask()
+
         # Apply winding before Puppet checks whether it should keep emerging or retreat.
         self.state.music_box.update(self.state, dt)
 
