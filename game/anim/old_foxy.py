@@ -24,6 +24,7 @@ class OldFoxy(Anim):
 
         if self.pos == 13:
             if self.game_state.light == "centre":
+                self.pressure = 0.0
                 self.flash_time += dt
                 if self.flash_time >= self.flash_required:
                     self.change_pos(self.reset_pos)
